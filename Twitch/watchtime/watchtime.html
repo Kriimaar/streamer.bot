@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="de" data-theme="dark">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<title>Watchtime · Kriimaar</title>
+<style>
+:root{--p:#a855f7;--sp:#55e58f;--bg:#f5f5f7;--s:#fff;--s2:#f0f0f3;--t:#151519;--m:#656570;--l:#c8c8d0;--l2:#a8a8b3;--max:1180px}:root[data-theme=dark]{--bg:#0b0b0e;--s:#121216;--s2:#18181e;--t:#f2f2f4;--m:#9898a3;--l:#292931;--l2:#3a3a45}:root[data-theme=oled]{--bg:#000;--s:#050505;--s2:#0d0d0f;--t:#f6f6f8;--m:#9c9ca2;--l:#28282e;--l2:#414149}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;padding-bottom:80px;background:var(--bg);color:var(--t);font:15px/1.55 Arial,Helvetica,sans-serif}.shell{width:min(calc(100% - 40px),var(--max));margin:auto}code,input,textarea,select,button{font-family:"Courier New",monospace}.header{position:sticky;top:0;z-index:5;background:#0c0c0e;border-bottom:1px solid #26262c}.header-in{min-height:58px;display:flex;justify-content:space-between;align-items:stretch;padding:0 24px}.brand{display:grid;place-items:center;color:#fff;font:700 16px "Courier New",monospace;text-decoration:none}.nav{display:flex}.nav a,.nav select{min-width:112px;padding:0 13px;border:0;border-left:1px solid #26262c;background:transparent;color:#8b8b96;font:11px "Courier New",monospace;text-transform:uppercase;text-decoration:none}.nav a{display:grid;place-items:center}.nav a:hover,.nav select:hover{background:#141419;color:#d7c3ff}.hero{display:grid;grid-template-columns:1fr 255px;border-bottom:1px solid var(--l)}.hero-copy{padding:68px 48px 58px 0}.label{margin:0 0 12px;color:var(--p);font:11px "Courier New",monospace;letter-spacing:.12em;text-transform:uppercase}h1{margin:0;font-size:clamp(42px,6vw,79px);line-height:.9;letter-spacing:-.07em;text-transform:uppercase}h1 span{color:var(--sp)}.lead{max-width:690px;margin:25px 0 0;color:var(--m);font-size:18px}.meta{display:flex;flex-direction:column;justify-content:space-between;padding:24px;background:var(--s);border-left:1px solid var(--l)}.meta p,.meta small{margin:0;color:var(--m);font:12px "Courier New",monospace}.meta b{color:var(--sp);font:700 38px/.9 "Courier New",monospace}section{border-bottom:1px solid var(--l)}.section,.guide{padding:56px 0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:36px}.title{margin:0;font-size:clamp(28px,4vw,43px);line-height:.98;letter-spacing:-.05em}.intro{max-width:720px;margin:15px 0;color:var(--m);font-size:16px}.box{margin-top:24px;padding:16px;border:1px solid var(--l2);background:var(--s)}.box h3{margin:0 0 8px;font-size:17px}.steps{margin:0;padding-left:20px}.steps li{margin-bottom:10px}.steps li::marker{color:var(--p);font-family:"Courier New",monospace;font-weight:bold}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 10px;border:1px solid var(--l2);background:transparent;color:var(--t);font:11px "Courier New",monospace;text-decoration:none;text-transform:uppercase;cursor:pointer}.btn:hover,.btn.active{border-color:var(--p);color:var(--p)}.btn.green,.btn.copied{border-color:var(--sp);background:var(--sp);color:#000}.btn.copy-error{border-color:#ed6565;color:#ff9191}.copyrow{display:flex;gap:8px;align-items:stretch}.copyrow textarea{min-height:160px}.copyrow .btn{min-width:150px}.video{margin-top:24px;aspect-ratio:16/9;border:1px solid var(--l2);background:#000}.video iframe{display:block;width:100%;height:100%;border:0}.video-soon{display:grid;place-items:center;border-style:dashed;background:var(--s)}.video-soon span{color:var(--m);font:11px "Courier New",monospace;letter-spacing:.14em}.table-wrap{overflow-x:auto}.setup-table{width:100%;border-collapse:collapse;font-size:13px}.setup-table th,.setup-table td{padding:12px;border:1px solid var(--l2);text-align:left;vertical-align:top}.setup-table th{background:var(--s2);color:var(--p);font:11px "Courier New",monospace;text-transform:uppercase}.setup-table td:first-child{white-space:nowrap}.action-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:25px}.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.badge{display:inline-flex;align-items:center;gap:7px;padding:5px 10px;border:1px solid var(--l2);background:var(--s);color:var(--m);font:10px "Courier New",monospace;letter-spacing:.08em;text-transform:uppercase}.badge i{width:6px;height:6px;border-radius:50%;background:var(--l2);flex-shrink:0}.badge.req{color:var(--t);border-color:#2e5e43}.badge.req i{background:var(--sp)}.badge.plat{color:var(--t);border-color:#5b3a86}.badge.plat i{background:var(--p)}.action{display:none}.action.active{display:block}.action-head{margin-top:26px;border-top:2px solid var(--t);padding-top:16px}.action-head b{font:16px "Courier New",monospace}.editor{display:grid;grid-template-columns:1.55fr .85fr;gap:20px;margin-top:15px}textarea{width:100%;min-height:590px;resize:vertical;padding:13px;background:#0f0f12;color:#d9def0;border:1px solid var(--l2);font-size:12px;line-height:1.48}.settings{padding:15px;border:1px solid var(--l2);background:var(--s)}.settings h3{margin:0 0 5px}.settings p{margin:0 0 14px;color:var(--m);font-size:13px}.field{margin-top:12px}.field label{display:block;margin-bottom:6px;color:var(--m);font:10px "Courier New",monospace;text-transform:uppercase}.field input{width:100%;height:39px;padding:0 9px;border:1px solid var(--l2);background:var(--bg);color:var(--t)}.field textarea{min-height:110px;width:100%;resize:vertical;padding:9px;border:1px solid var(--l2);background:var(--bg);color:var(--t);font-size:12px;line-height:1.5}.bottom-bar{position:fixed;z-index:8;bottom:0;left:0;width:100%;min-height:46px;padding:6px 24px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;background:#0c0c0e;border-top:1px solid #26262c;color:#8b8b96;font-size:12px}.bottom-bar button,.footer-link{border:0;background:transparent;color:#8b8b96;font:11px "Courier New",monospace;text-transform:uppercase;cursor:pointer;text-decoration:none}.bottom-bar button:hover,.footer-link:hover{color:#55e58f}.social-icons{display:flex;align-items:center;gap:12px}.social-icons a{display:grid;place-items:center;color:#8b8b96}.social-icons a:hover{color:#a855f7}.social-icons svg{width:18px;height:18px;fill:currentColor}.bottom-bar-right{text-align:right}.overlay{display:none;position:fixed;inset:0;z-index:12;background:#000a;align-items:center;justify-content:center;padding:20px}.overlay.show{display:flex}.modal{width:min(100%,540px);padding:24px;border:1px solid var(--l2);background:var(--s);box-shadow:0 20px 80px #0009}.modal h2{margin:0 0 20px;color:var(--p)}.modal p{color:var(--m);font-size:13px;margin:0 0 15px}.modal .close{text-align:right}.shot{margin-top:16px;border:1px solid var(--l2);background:var(--s2);padding:8px}.shot img{width:100%;display:block}.shot figcaption{margin-top:8px;color:var(--m);font-size:12px}.note{margin-top:24px;padding:16px;border:1px solid #2e5e43;background:var(--s)}.note h3{margin:0 0 8px;font-size:17px}.note.warn{border-color:#8a6d1f}@media(max-width:800px){body{padding-bottom:112px}.shell{width:min(calc(100% - 28px),var(--max))}.header-in{min-height:57px;padding:0 14px}.nav a{display:none}.ks-wrap{min-width:0}.hero,.grid,.editor{grid-template-columns:1fr}.hero-copy{padding:44px 0}.meta{min-height:140px;border-left:0;border-top:1px solid var(--l)}.section,.guide{padding:42px 0}.copyrow{flex-direction:column}.copyrow textarea{min-height:220px}.bottom-bar{grid-template-columns:1fr;gap:3px;padding:7px 14px;text-align:center}.bottom-bar-left,.bottom-bar-right{text-align:center}.social-icons{justify-content:center}}
+</style></head>
+<body>
+<header class="header"><div class="header-in"><a class="brand" href="../../index.html">Kriimaar</a><nav class="nav"><div class="pn-wrap" id="pageNav"><button type="button" class="pn-btn">FUNKTION / WATCHTIME</button>
+    <div class="pn-menu">
+      <a href="../../index.html">STARTSEITE / ÜBERSICHT</a>
+      <a href="../../Twitch/channel-points/user-timeout.html">FUNKTION / KANALPUNKTE-TIMEOUT</a>
+      <a href="../../Twitch/emotes/emote-recommendations.html">FUNKTION / 7TV EMOTE SYSTEM</a>
+      <a href="../../Twitch/channel-points/random-meme-generator.html">FUNKTION / RANDOM MEME</a>
+      <a href="../../Twitch/watchtime/watchtime.html">FUNKTION / WATCHTIME</a>
+      <a href="../../Twitch/moderation/stream-moderation.html">FUNKTION / STREAM-MODERATION</a>
+      <a href="../../Spotify/spotify-actions.html">FUNKTION / SPOTIFY ACTIONS</a>
+    </div></div></nav></div></header>
+<main id="top">
+<section class="shell hero"><div class="hero-copy"><p class="label" data-i18n="wt.hero.label">Streamer.bot · Twitch · Watchtime</p><h1>Watch<br><span>time.</span></h1><p class="lead" data-i18n="wt.lead">Mit dieser Funktion sammelt Streamer.bot die Watchtime deiner Zuschauer selbst, ganz ohne externe Dienste. Wer aktiv im Chat dabei ist, wird über die Present-Viewer-Liste erkannt und bekommt jede Minute gutgeschrieben. Dazu gibt es einen !watchtime-Command, ein Top-5-Leaderboard für den Chat und optional einen Import, der deine bisherige StreamElements-Watchtime übernimmt.</p><div class="badges"><span class="badge req"><i></i>TWITCH</span><span class="badge req"><i></i>STREAMER.BOT</span><span class="badge plat"><i></i>KEIN OBS NÖTIG</span></div></div><aside class="meta"><p data-i18n="wt.meta">WATCHTIME</p><b>1.0.0</b><small data-i18n="wt.hero.small">Present Viewer · Commands · Leaderboard</small></aside></section>
+
+<section class="guide"><div class="shell"><p class="label" data-i18n="wt.guide.label">Video-Anleitung</p><h2 class="title" data-i18n="wt.guide.title">Einrichtung im Video ansehen</h2><p class="intro" data-i18n="wt.guide.intro">Das Video zur Einrichtung folgt hier. Bis dahin führt dich die Anleitung in den Abschnitten darunter Schritt für Schritt durch die Einrichtung.</p><div class="video video-soon"><span data-i18n="wt.guide.soon">VIDEO FOLGT IN KÜRZE</span></div></div></section>
+
+<section id="voraussetzungen"><div class="shell section"><p class="label" data-i18n="wt.s2.label">02 / Voraussetzungen</p><h2 class="title" data-i18n="wt.s2.title">Was vorher vorhanden sein muss</h2><div class="grid"><div class="box"><h3 data-i18n="wt.s2.h3a">Streamer.bot</h3><p class="intro" data-i18n="wt.s2.pa">Streamer.bot legt für jeden Zuschauer eine eigene User-Variable an und zählt dort hoch. Die Twitch-Verbindung steht zum Glück schon, wie du sie von anderen Funktionen kennst.</p></div><div class="box"><h3 data-i18n="wt.s2.h3b">Aktive Twitch-Verbindung</h3><p class="intro" data-i18n="wt.s2.pb">Das Bot-Konto muss mit deinem Chat verbunden sein, sonst kann es weder auf Commands antworten noch die Zuschauerliste empfangen.</p></div><div class="box"><h3 data-i18n="wt.s2.h3c">Present Viewer aktiv</h3><p class="intro" data-i18n="wt.s2.pc">Die Zählung läuft komplett über die Present-Viewer-Funktion von Streamer.bot. In Schritt 03 zeige ich dir, wo du sie einschaltest.</p></div><div class="box"><h3 data-i18n="wt.s2.h3d">Import-Keys</h3><p class="intro" data-i18n="wt.s2.pd">Der Import-Key weiter unten bringt Command, Counter und Leaderboard mit. Optional gibt es einen zweiten Key, der deine StreamElements-Watchtime importiert, inklusive Undo.</p></div></div></div></section>
+
+<section id="twitch-settings"><div class="shell section"><p class="label" data-i18n="wt.s3.label">03 / Twitch-Einstellungen</p><h2 class="title" data-i18n="wt.s3.title">Present Viewer aktivieren</h2><p class="intro" data-i18n="wt.s3.intro">Damit überhaupt etwas gezählt wird, muss Streamer.bot wissen, wer gerade in deinem Chat aktiv ist. Das erledigt die Present-Viewer-Funktion, du musst sie nur einmal in den Twitch-Einstellungen einschalten.</p><div class="box"><h3 data-i18n="wt.s3.h3a">In Streamer.bot</h3><ol class="steps"><li data-i18n="wt.s3.l1">Öffne in der Leiste links <b>Platforms</b> und dann <b>Twitch</b>.</li><li data-i18n="wt.s3.l2">Setze den Schalter bei <b>Present Viewers</b> auf <b>Enabled</b>.</li><li data-i18n="wt.s3.l3">Schalte darin <b>Live Update</b> ein, damit die Zuschauerliste in Echtzeit von Twitch kommt.</li><li data-i18n="wt.s3.l4">Stelle <b>Update Interval</b> auf <b>1 minute(s)</b>. Der Regler lässt sich zwischen 1 und 10 Minuten einstellen, 1 Minute ist am akkuratesten, weil so jedes Update mitgezählt wird.</li></ol></div><figure class="shot"><img src="../../assets/images/watchtime-01.png" alt="Twitch-Einstellungen in Streamer.bot: Present Viewers mit Live Update und Update Interval" loading="lazy"><figcaption data-i18n="wt.s3.cap1">Platforms → Twitch: Present Viewers auf Enabled, Live Update an und das Update Interval auf 1 Minute, im Bild gelb markiert.</figcaption></figure></div></section>
+
+<section id="import"><div class="shell section"><p class="label" data-i18n="wt.s4.label">04 / Import</p><h2 class="title" data-i18n="wt.s4.title">Import-Keys in Streamer.bot einfügen</h2><p class="intro" data-i18n="wt.s4.intro">Beide Pakete landen über <b>Import → Import from Clipboard</b> in Streamer.bot. Der erste Key enthält die komplette Watchtime-Funktion, der zweite ist der optionale StreamElements-Import mit Undo.</p><div class="grid"><div><div class="box"><h3 data-i18n="wt.s4.h3a">Watchtime (Hauptfunktion)</h3><p class="intro" data-i18n="wt.s4.pa">Watchtime-Command, -Counter und -Leaderboard, fertig verdrahtet und importierbar.</p><button class="btn green" id="copyImportWt" data-i18n="wt.s4.btn1">IMPORT-KEY KOPIEREN</button></div></div><div><div class="box"><h3 data-i18n="wt.s4.h3b">StreamElements Watchtime Import (optional)</h3><p class="intro" data-i18n="wt.s4.pb">Holt deine bisherige Watchtime aus StreamElements rüber. Läuft beim Import etwas schief, rollt die Undo-Funktion alles zurück.</p><button class="btn green" id="copyImportSe" data-i18n="wt.s4.btn2">IMPORT-KEY KOPIEREN</button></div></div></div><div class="grid"><div class="box"><h3 data-i18n="wt.s4.h3c">Import durchführen</h3><ol class="steps"><li data-i18n="wt.s4.l1">Öffne Streamer.bot.</li><li data-i18n="wt.s4.l2">Klicke oben auf <b>Import</b>.</li><li data-i18n="wt.s4.l3">Wähle <b>Import from Clipboard</b>.</li><li data-i18n="wt.s4.l4">Klicke hier auf <b>Import-Key kopieren</b> (Hauptfunktion).</li><li data-i18n="wt.s4.l5">Füge den Key in Streamer.bot ein und bestätige den Import.</li><li data-i18n="wt.s4.l6">Wenn du magst, wiederhole das Ganze danach mit dem StreamElements-Key.</li></ol></div><div class="note warn"><h3 data-i18n="wt.s4.h3d">StreamElements-Import: nur einmal Test-Triggern</h3><ol class="steps"><li data-i18n="wt.s4.l7">Beide StreamElements-Aktionen laufen über <b>Test-Trigger</b>: Rechtsklick auf den Trigger, dann <b>Test Trigger</b> drücken.</li><li data-i18n="wt.s4.l8">Den Import nur <b>einmal</b> triggern, pro Triggerung wird die komplette Watchtime importiert.</li><li data-i18n="wt.s4.l9">Passt etwas nicht, macht die <b>Undo</b>-Funktion den Import wieder rückgängig (gleicher Weg über den Test Trigger).</li></ol></div></div></div></section>
+
+<section id="anpassen"><div class="shell section"><p class="label" data-i18n="wt.s5.label">05 / C#-Codes anpassen</p><h2 class="title" data-i18n="wt.s5.title">Bot-Nachrichten und Werte einstellen</h2><p class="intro" data-i18n="wt.s5.intro">Alle drei Codes kannst du hier anpassen. Deine Werte kommen in die Felder rechts, der Code links zieht sofort nach. Die Zeilen mit ★ markieren genau die Stellen, an denen deine Eingaben landen. Gespeichert wird alles nur lokal in deinem Browser.</p><div class="action-nav"><button class="btn active" data-tab="wt-a1">WATCHTIME COMMAND</button><button class="btn" data-tab="wt-a2">WATCHTIME COUNTER</button><button class="btn" data-tab="wt-a3">WATCHTIME LEADERBOARD</button></div><article class="action active" id="wt-a1"><div class="action-head"><b>WATCHTIME COMMAND</b></div><p class="intro" data-i18n="wt.ed.cmd.p">Beantwortet den !watchtime-Command im Chat mit der gesammelten Watchtime des Zuschauers.</p><div class="editor"><div><div style="display:flex;gap:8px;margin-bottom:10px"><button class="btn green copy-code" data-i18n="wt.ed.btn">C#-CODE KOPIEREN</button></div><textarea id="wtCmdCode" class="action-code" spellcheck="false" aria-label="C#-Code Watchtime Command"></textarea></div><aside class="settings"><h3 data-i18n="wt.ed.h3">Eigene Werte</h3><p data-i18n="wt.ed.p">Jedes Feld wird 1:1 in den Code übernommen.</p><div class="field"><label for="wtCmdMsg" data-i18n="wt.ed.cmd.f1">Bot-Nachricht · {name} = Zuschauername, {zeit} = Watchtime</label><input id="wtCmdMsg" value="@{name}, deine Watchtime beträgt {zeit} ⏱️"></div><div class="field"><label for="wtCmdVar" data-i18n="wt.ed.fvar">Variablenname</label><input id="wtCmdVar" value="watchtimeSeconds"></div></aside></div></article><article class="action" id="wt-a2"><div class="action-head"><b>WATCHTIME COUNTER</b></div><p class="intro" data-i18n="wt.ed.ctr.p">Läuft bei jedem Present-Viewer-Update und zählt alle aktiven Zuschauer hoch. Du selbst als Broadcaster (Rolle 4) wird übersprungen, gezählt wird nur, wenn der Stream live ist.</p><div class="editor"><div><div style="display:flex;gap:8px;margin-bottom:10px"><button class="btn green copy-code" data-i18n="wt.ed.btn">C#-CODE KOPIEREN</button></div><textarea id="wtCtrCode" class="action-code" spellcheck="false" aria-label="C#-Code Watchtime Counter"></textarea></div><aside class="settings"><h3 data-i18n="wt.ed.h3">Eigene Werte</h3><p data-i18n="wt.ed.ctr.p2">Das Intervall sollte zum Update Interval aus Schritt 03 passen, bei 1 Minute also 60.</p><div class="field"><label for="wtCtrInt" data-i18n="wt.ed.ctr.f1">Intervall in Sekunden</label><input id="wtCtrInt" value="60"></div><div class="field"><label for="wtCtrVar" data-i18n="wt.ed.fvar">Variablenname</label><input id="wtCtrVar" value="watchtimeSeconds"></div></aside></div></article><article class="action" id="wt-a3"><div class="action-head"><b>WATCHTIME LEADERBOARD</b></div><p class="intro" data-i18n="wt.ed.lb.p">Zeigt die fleißigsten Zuschauer nach Watchtime an. Wer selbst nicht in den Top 5 steht, bekommt seinen Platz automatisch hinten drangehängt.</p><div class="editor"><div><div style="display:flex;gap:8px;margin-bottom:10px"><button class="btn green copy-code" data-i18n="wt.ed.btn">C#-CODE KOPIEREN</button></div><textarea id="wtLbCode" class="action-code" spellcheck="false" aria-label="C#-Code Watchtime Leaderboard"></textarea></div><aside class="settings"><h3 data-i18n="wt.ed.h3">Eigene Werte</h3><p data-i18n="wt.ed.lb.p2">Pro Zeile ein Name. Wer hier nicht steht, taucht später im Leaderboard auf.</p><div class="field"><label for="wtLbVar" data-i18n="wt.ed.fvar">Variablenname</label><input id="wtLbVar" value="watchtimeSeconds"></div><div class="field"><label for="wtLbTop" data-i18n="wt.ed.lb.f2">Anzahl Plätze</label><input id="wtLbTop" value="5"></div><div class="field"><label for="wtLbHeader" data-i18n="wt.ed.lb.f3">Nachrichtenanfang</label><input id="wtLbHeader" value="🏆 Watchtime Top 5: "></div><div class="field"><label for="wtLbEmpty" data-i18n="wt.ed.lb.f4">Nachricht bei leeren Werten</label><input id="wtLbEmpty" value="🏆 Für das Watchtime-Leaderboard sind noch keine Zuschauerwerte vorhanden."></div><div class="field"><label for="wtLbExcluded" data-i18n="wt.ed.lb.f5">Ausgeschlossene Bots (eine Zeile = ein Name)</label><textarea id="wtLbExcluded" spellcheck="false">streamelements
+PokemonCommunityGame
+nightbot
+moobot
+fossabot
+wizebot
+coebot
+deepbot
+streamlabs
+soundalerts
+sery_bot
+kofi_on_twitch
+own3d
+restreambot
+commanderroot
+anotherttvviewer</textarea></div></aside></div></article></div></section>
+
+<section id="einrichten"><div class="shell section"><p class="label" data-i18n="wt.s6.label">06 / In Streamer.bot einrichten</p><h2 class="title" data-i18n="wt.s6.title">Actions aktivieren und Code kompilieren</h2><div class="grid"><div class="box"><h3 data-i18n="wt.s6.h3a">Actions aktivieren</h3><ol class="steps"><li data-i18n="wt.s6.l1">Importierte Commands landen zunächst deaktiviert in Streamer.bot. Öffne <b>Commands</b> und schalte sie per Rechtsklick frei.</li><li data-i18n="wt.s6.l2">Schau unter <b>Actions &amp; Queues → Actions</b>, ob alle Watchtime-Actions angekommen sind.</li><li data-i18n="wt.s6.l3">Command-Trigger und Present-Viewer-Trigger sind durch den Import schon verbunden, hier musst du nichts mehr anfassen.</li></ol></div><div class="box"><h3 data-i18n="wt.s6.h3b">C#-Code kompilieren</h3><ol class="steps"><li data-i18n="wt.s6.l4">Öffne jede importierte Action und doppelklicke die Sub-Action <b>Execute Code</b>.</li><li data-i18n="wt.s6.l5">Ersetze den kompletten Inhalt durch den Code aus dem Editor oben (Schritt 05).</li><li data-i18n="wt.s6.l6">Unten links zuerst <b>Find Refs</b>, dann <b>Compile</b>. Erst wenn keine Fehler mehr auftauchen: <b>Save &amp; Compile</b>.</li><li data-i18n="wt.s6.l7">Das Ganze für alle drei Codes: Command, Counter und Leaderboard.</li></ol></div></div><div class="grid"><div class="box"><h3 data-i18n="wt.s6.h3c">StreamElements-Import einsetzen</h3><ol class="steps"><li data-i18n="wt.s6.l8">Die StreamElements-Aktionen laufen über <b>Test-Trigger</b>: Rechtsklick auf den Trigger → <b>Test Trigger</b>.</li><li data-i18n="wt.s6.l9">Nur <b>einmal</b> triggern, jeder Trigger führt den kompletten Import aus.</li><li data-i18n="wt.s6.l10">Rückgängig geht's genauso über die Undo-Action und <b>Test Trigger</b>.</li></ol></div><div class="box"><h3 data-i18n="wt.s6.h3d">So funktioniert das System</h3><ol class="steps"><li data-i18n="wt.s6.l11">Der <b>Counter</b> läuft automatisch bei jedem Present-Viewer-Update und erhöht <code>%watchtimeSeconds%</code> um dein Intervall.</li><li data-i18n="wt.s6.l12">Der <b>Command</b> liest die Variable und antwortet im Chat.</li><li data-i18n="wt.s6.l13">Das <b>Leaderboard</b> sortiert alle Werte, filtert Bots und dich als Broadcaster raus und postet die Top-Plätze.</li></ol></div></div></div></section>
+
+<section id="testen"><div class="shell section"><p class="label" data-i18n="wt.s7.label">07 / Abschluss</p><h2 class="title" data-i18n="wt.s7.title">Kontrolle vor dem ersten Live-Test</h2><div class="grid"><div class="box"><h3 data-i18n="wt.s7.h3a">Checkliste</h3><ol class="steps"><li data-i18n="wt.s7.l1">Present Viewers ist auf Enabled, Live Update an, Update Interval auf 1 Minute.</li><li data-i18n="wt.s7.l2">Alle drei Codes kompilieren ohne Fehler.</li><li data-i18n="wt.s7.l3"><code>!watchtime</code> und <code>!wtboard</code> in den Chat schreiben. Der Bot sollte bei beiden antworten, ganz am Anfang natürlich noch mit 0 Std. und 0 Min.</li></ol></div><div class="box"><h3 data-i18n="wt.s7.h3b">Typische Probleme</h3><ol class="steps"><li data-i18n="wt.s7.l4"><b>Watchtime bleibt bei 0?</b> Prüfe Present Viewers, Live Update und das Update Interval (Schritt 03), und ob im Counter-Editor dieselbe Intervall-Zahl steht.</li><li data-i18n="wt.s7.l5"><b>Bots im Leaderboard?</b> Trag die Namen einfach in die Ausschluss-Liste des Leaderboard-Editors nach.</li><li data-i18n="wt.s7.l6"><b>Doppelt importiert?</b> Den StreamElements-Import per Undo-Action (Test Trigger) zurücksetzen und einmal neu triggern.</li></ol></div></div><figure class="shot"><img src="../../assets/images/watchtime-02.webp" alt="Watchtime-Commands im Twitch-Chat: !wtboard und !watchtime mit Bot-Antwort" loading="lazy"><figcaption data-i18n="wt.s7.cap2">So sieht es im Twitch-Chat aus: !wtboard für das Leaderboard und !watchtime für die eigene Watchtime, hier mit den Standard-Texten aus den Editoren.</figcaption></figure></div></section>
+
+<section id="autoActivate"><div class="shell section"><p class="label" data-i18n="wt.s8.label">08 / Auto Activate/Deactivate (optional)</p><h2 class="title" data-i18n="wt.s8.title">Zählung nur schalten, wenn der Stream läuft</h2><p class="intro" data-i18n="wt.s8.intro">Wem die manuelle Aktivierung zu faul ist: <b>Auto Activate/Deactivate Watchtime-Counting</b> aktiviert bei Streamstart automatisch die <b>Watchtime Counter</b>-Action und legt sie bei Streamende wieder still. Das spart Anfragen des Bots an die Twitch-Server, wenn der Stream nicht läuft, und entlastet damit auch minimal den PC.</p><div class="grid"><div class="box"><h3 data-i18n="wt.s8.h3a">Was der Import anlegt</h3><ol class="steps"><li data-i18n="wt.s8.l1">Die Aktion <b>Activate Counting</b> feuert bei <b>Stream Started</b> und schaltet die Watchtime Counter-Action ein, war sie schon an, passiert nichts.</li><li data-i18n="wt.s8.l2">Die Aktion <b>Deactivate Counting</b> feuert bei <b>Stream Ended</b> und schaltet die Counter-Action wieder aus.</li><li data-i18n="wt.s8.l3">Die Counter-Action selbst bring der Import als deaktiviertes Duplikat mit (Gruppe <b>Watchtime</b>), sie wird automatisch zusammen mit dem System aktiviert.</li></ol></div><div class="box"><h3 data-i18n="wt.s8.h3b">So richtest du es ein</h3><ol class="steps"><li data-i18n="wt.s8.l4">Importiere den Key unten (Import → Import from Clipboard).</li><li data-i18n="wt.s8.l5">Importiere, falls noch nicht geschehen, Ihren Haupt-Watchtime-Import (Schritt 04) und füge den Compilierin-Code in die neue, deaktivierte Counter-Action ein (Find Refs → Compile → Save &amp; Compile).</li><li data-i18n="wt.s8.l6">Den Counter <b>nicht manuell aktivieren</b>, das übernehmen Activate/Deactivate beim Streamstart/-ende.</li><li data-i18n="wt.s8.l7">Testen: Stream starten, in Streamer.bot prüfen, dass die Counter-Action aktiv wird. Beim Streamende sollte sie sich automatisch abschalten.</li></ol></div></div><div class="box"><h3 data-i18n="wt.s8.h3c">Import</h3><p class="intro" data-i18n="wt.s8.p2">Der Import enthält nur die Schalt-Logik plus Counter-Duplikat, Command, Leaderboard und StreamElements-Import bleiben unberührt.</p><button class="btn green" id="copyImportAuto" data-i18n="wt.s8.btn">IMPORT-KEY KOPIEREN</button></div></div></section>
+
+<section id="support"><div class="shell section"><p class="label">Feedback &amp; Support</p><h2 class="title">Fehler gefunden oder eine Action vermisst?</h2><p class="intro">Melde dich im Discord oder lege ein GitHub Issue an. Beides hilft, die Sammlung laufend zu verbessern.</p><div class="action-nav"><a class="btn" href="https://discord.gg/WxSbBstFmt" target="_blank" rel="noopener noreferrer">IM DISCORD MELDEN ↗</a><a class="btn" href="https://github.com/Kriimaar/streamer.bot-functions/issues" target="_blank" rel="noopener noreferrer">GITHUB ISSUE ↗</a></div></div></section></main>
+
+<footer class="bottom-bar"><div class="bottom-bar-left"><button id="btn-privacy">Datenschutz &amp; Info</button></div><div class="social-icons"><a href="https://discord.com/invite/WxSbBstFmt" target="_blank" rel="noopener noreferrer" title="Discord"><svg viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.0777.0777 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276c-.598.355-1.221.645-1.873.8914a.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.077.077 0 00.0842.0286c1.961-.6067 4.0-1.52 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.852-9.012-3.5485-13.6604z"></path></svg></a><a href="https://www.youtube.com/@KriimaarSouls" target="_blank" rel="noopener noreferrer" title="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136C4.495 20.455 12 20.455 12 20.455s7.505 0 9.376-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg></a><a href="https://github.com/kriimaar" target="_blank" rel="noopener noreferrer" title="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 9.2-5.475 5.92.42.36.81.9.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 15.93 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a><a href="https://steamcommunity.com/id/kriimaar" target="_blank" rel="noopener noreferrer" title="Steam Freundschaftsanfrage"><svg viewBox="0 0 24 24"><path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z"/></svg></a></div><div class="bottom-bar-right"><a id="btn-ai-info" class="footer-link">Design mit Hilfe von KI erstellt</a></div></footer>
+<div class="overlay" id="privacyModal"><div class="modal"><h2>Datenschutz &amp; Info</h2><p>Diese Webseite speichert keine persönlichen Daten. Einstellungen und Textänderungen werden ausschließlich lokal im Browser verarbeitet und zwischengespeichert. Durch eine Cache-Löschung werden diese Daten zurückgesetzt.</p><p data-i18n="priv.host">Die Seite wird über <a href="https://docs.github.com/de/pages" target="_blank" rel="noopener noreferrer">GitHub Pages</a> gehostet. Es gelten die <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">Datenschutzbestimmungen von GitHub</a>.</p><div class="close"><button class="btn" data-close="privacyModal">SCHLIEẞEN</button></div></div></div><div class="overlay" id="aiModal"><div class="modal"><h2>KI-Assistenz</h2><p>Die Webseite wird mit Hilfe von KI gebaut und erweitert, die Idee und Umsetzung der einzelnen Funktionen werden davon nicht beeinflusst. KI wird maximal dazu genutzt, fertige Features und Codezeilen verständlich zu machen, sodass jeder den Code nachlesen und anhand der Notizen darin nachvollziehen kann, was wie und wann gemacht wurde.</p><div class="close"><button class="btn" data-close="aiModal">SCHLIEẞEN</button></div></div></div>
+<script src="../../assets/app.js"></script>
+<script>
+I18N.add({"en": {"wt.hero.label": "Streamer.bot · Twitch · Watchtime", "wt.lead": "With this feature, Streamer.bot collects your viewers' watch time on its own, no external services involved. Anyone active in chat is detected via the present viewer list and credited every minute. It comes with a !watchtime command, a top 5 leaderboard for chat and an optional import that takes over your existing StreamElements watch time.", "wt.meta": "WATCHTIME", "wt.hero.small": "Present viewer · Commands · Leaderboard", "wt.guide.label": "Video guide", "wt.guide.title": "Watch the setup in the video", "wt.guide.intro": "The setup video follows here. Until then, the guide in the sections below walks you through the setup step by step.", "wt.guide.soon": "VIDEO COMING SOON", "wt.s2.label": "02 / Requirements", "wt.s2.title": "What needs to be in place first", "wt.s2.h3a": "Streamer.bot", "wt.s2.pa": "Streamer.bot creates its own user variable per viewer and counts up there. The Twitch connection is already in place, just like with the other features.", "wt.s2.h3b": "Active Twitch connection", "wt.s2.pb": "The bot account must be connected to your chat, otherwise it can neither answer commands nor receive the viewer list.", "wt.s2.h3c": "Present viewer active", "wt.s2.pc": "The counting runs entirely on the present viewer feature of Streamer.bot. Step 03 shows you where to switch it on.", "wt.s2.h3d": "Import keys", "wt.s2.pd": "The import key below comes with command, counter and leaderboard. Optionally there is a second key that imports your StreamElements watch time, including undo.", "wt.s3.label": "03 / Twitch settings", "wt.s3.title": "Enable present viewers", "wt.s3.intro": "Before anything can be counted, Streamer.bot needs to know who is currently active in your chat. The present viewer feature does that, you only have to switch it on once in the Twitch settings.", "wt.s3.h3a": "In Streamer.bot", "wt.s3.l1": "Open <b>Platforms</b> in the left sidebar and then <b>Twitch</b>.", "wt.s3.l2": "Set the <b>Present Viewers</b> toggle to <b>Enabled</b>.", "wt.s3.l3": "Turn on <b>Live Update</b> inside it, so the viewer list arrives in real time from Twitch.", "wt.s3.l4": "Set <b>Update Interval</b> to <b>1 minute(s)</b>. The slider goes from 1 to 10 minutes, 1 minute is the most accurate, because every update gets counted.", "wt.s3.cap1": "Platforms → Twitch: Present Viewers on Enabled, Live Update on and Update Interval at 1 minute, highlighted in yellow in the screenshot.", "wt.s4.label": "04 / Import", "wt.s4.title": "Paste the import keys into Streamer.bot", "wt.s4.intro": "Both packages arrive in Streamer.bot via <b>Import → Import from Clipboard</b>. The first key contains the complete watch time feature, the second is the optional StreamElements import with undo.", "wt.s4.h3a": "Watchtime (main feature)", "wt.s4.pa": "Watch time command, counter and leaderboard, fully wired and ready to import.", "wt.s4.btn1": "COPY IMPORT KEY", "wt.s4.h3b": "StreamElements watch time import (optional)", "wt.s4.pb": "Brings your existing StreamElements watch time over. If anything goes wrong during the import, the undo feature rolls it all back.", "wt.s4.btn2": "COPY IMPORT KEY", "wt.s4.h3c": "Running the import", "wt.s4.l1": "Open Streamer.bot.", "wt.s4.l2": "Click <b>Import</b> at the top.", "wt.s4.l3": "Choose <b>Import from Clipboard</b>.", "wt.s4.l4": "Click <b>Copy import key</b> here (main feature).", "wt.s4.l5": "Paste the key into Streamer.bot and confirm the import.", "wt.s4.l6": "If you like, repeat the whole thing afterwards with the StreamElements key.", "wt.s4.h3d": "StreamElements import: test trigger only once", "wt.s4.l7": "Both StreamElements actions run via <b>test triggers</b>: right click the trigger, then press <b>Test Trigger</b>.", "wt.s4.l8": "Trigger the import <b>once</b> only, each trigger imports the complete watch time.", "wt.s4.l9": "If something does not fit, the <b>undo</b> feature reverts the import (same way via the test trigger).", "wt.s5.label": "05 / Customize the C# codes", "wt.s5.title": "Set your bot messages and values", "wt.s5.intro": "All three codes can be customized here. Your values go into the fields on the right, the code on the left follows instantly. The lines marked with ★ show exactly where your input lands. Everything is stored only locally in your browser.", "wt.ed.cmd.p": "Answers the !watchtime command in chat with the viewer's collected watch time.", "wt.ed.btn": "COPY C# CODE", "wt.ed.h3": "Your values", "wt.ed.p": "Every field is copied 1:1 into the code.", "wt.ed.cmd.f1": "Bot message · {name} = viewer name, {zeit} = watch time", "wt.ed.fvar": "Variable name", "wt.ed.ctr.p": "Runs on every present viewer update and counts up all active viewers. You yourself as broadcaster (role 4) are skipped, and counting only happens while the stream is live.", "wt.ed.ctr.p2": "The interval should match the update interval from step 03, 60 for 1 minute.", "wt.ed.ctr.f1": "Interval in seconds", "wt.ed.lb.p": "Shows your most dedicated viewers by watch time. If the requester is not in the top 5, their rank is automatically appended at the end.", "wt.ed.lb.p2": "One name per line. Whoever is not listed here will appear in the leaderboard later.", "wt.ed.lb.f2": "Number of places", "wt.ed.lb.f3": "Message start", "wt.ed.lb.f4": "Message for empty values", "wt.ed.lb.f5": "Excluded bots (one line = one name)", "wt.s6.label": "06 / Set up in Streamer.bot", "wt.s6.title": "Activate actions and compile the code", "wt.s6.h3a": "Activate actions", "wt.s6.l1": "Imported commands arrive disabled in Streamer.bot. Open <b>Commands</b> and enable them via right click.", "wt.s6.l2": "Have a look under <b>Actions &amp; Queues → Actions</b> to see whether all watch time actions arrived.", "wt.s6.l3": "The command trigger and the present viewer trigger are already connected by the import, you do not have to touch anything here.", "wt.s6.h3b": "Compile the C# code", "wt.s6.l4": "Open each imported action and double click the <b>Execute Code</b> sub-action.", "wt.s6.l5": "Replace the complete content with the code from the editor above (step 05).", "wt.s6.l6": "Bottom left <b>Find Refs</b> first, then <b>Compile</b>. Only once no more errors show up: <b>Save &amp; Compile</b>.", "wt.s6.l7": "Do that for all three codes: command, counter and leaderboard.", "wt.s6.h3c": "Using the StreamElements import", "wt.s6.l8": "The StreamElements actions run via <b>test triggers</b>: right click the trigger → <b>Test Trigger</b>.", "wt.s6.l9": "Trigger <b>once</b> only, every trigger runs the complete import.", "wt.s6.l10": "Reverting works the same way via the undo action and <b>Test Trigger</b>.", "wt.s6.h3d": "How the system works", "wt.s6.l11": "The <b>counter</b> runs automatically on every present viewer update and adds your interval to <code>%watchtimeSeconds%</code>.", "wt.s6.l12": "The <b>command</b> reads the variable and answers in chat.", "wt.s6.l13": "The <b>leaderboard</b> sorts all values, filters bots and you as broadcaster and posts the top places.", "wt.s7.label": "07 / Wrap-up", "wt.s7.title": "Checks before the first live test", "wt.s7.h3a": "Checklist", "wt.s7.l1": "Present viewers is set to enabled, live update on, update interval at 1 minute.", "wt.s7.l2": "All three codes compile without errors.", "wt.s7.l3": "Type <code>!watchtime</code> and <code>!wtboard</code> into chat. The bot should reply to both, right at the start, of course, still with 0 h and 0 min.", "wt.s7.h3b": "Common issues", "wt.s7.l4": "<b>Watch time stays at 0?</b> Check present viewers, live update and the update interval (step 03), and whether the counter editor holds the same interval number.", "wt.s7.l5": "<b>Bots in the leaderboard?</b> Just add the names to the exclusion list in the leaderboard editor.", "wt.s7.l6": "<b>Imported twice?</b> Reset the StreamElements import via the undo action (test trigger) and trigger it once again.", "wt.s7.cap2": "How it looks in Twitch chat: !wtboard for the leaderboard and !watchtime for your own watch time, here with the default texts from the editors.", "wt.s8.label": "08 / Auto activate/deactivate (optional)", "wt.s8.title": "Switch counting only while the stream is live", "wt.s8.intro": "For everyone who finds manual switching too tedious: <b>Auto Activate/Deactivate Watchtime-Counting</b> automatically enables the <b>Watchtime Counter</b> action on stream start and puts it back to sleep on stream end. This saves the bot\'s requests to the Twitch servers while the stream is offline and also takes a little load off your PC.", "wt.s8.h3a": "What the import creates", "wt.s8.l1": "The <b>Activate Counting</b> action fires on <b>Stream Started</b> and enables the Watchtime Counter action, if it is already on, nothing happens.", "wt.s8.l2": "The <b>Deactivate Counting</b> action fires on <b>Stream Ended</b> and disables the counter action again.", "wt.s8.l3": "The counter action itself ships along as a disabled duplicate (group <b>Watchtime</b>), it is activated automatically together with the system.", "wt.s8.h3b": "How to set it up", "wt.s8.l4": "Import the key below (Import → Import from Clipboard).", "wt.s8.l5": "If you have not already, import the main watchtime import (step 04) and paste its compiled code into the new, disabled counter action (Find Refs → Compile → Save &amp; Compile).", "wt.s8.l6": "Do <b>not</b> enable the counter manually, Activate/Deactivate take care of that on stream start/end.", "wt.s8.l7": "Test: start a stream, check in Streamer.bot that the counter action becomes active. On stream end it should switch itself off again.", "wt.s8.h3c": "Import", "wt.s8.p2": "The import only contains the switching logic plus the counter duplicate, command, leaderboard and StreamElements import stay untouched.", "wt.s8.btn": "COPY IMPORT KEY", "WATCHTIME COMMAND": "WATCHTIME COMMAND", "WATCHTIME COUNTER": "WATCHTIME COUNTER", "WATCHTIME LEADERBOARD": "WATCHTIME LEADERBOARD", 'Die Webseite wird mit Hilfe von KI gebaut und erweitert, die Idee und Umsetzung der einzelnen Funktionen werden davon nicht beeinflusst. KI wird maximal dazu genutzt, fertige Features und Codezeilen verständlich zu machen, sodass jeder den Code nachlesen und anhand der Notizen darin nachvollziehen kann, was wie und wann gemacht wurde.':'The website is built and expanded with the help of AI, but the ideas and implementation of the individual features are not influenced by it. AI is used at most to make finished features and lines of code understandable, so anyone can read the code and tell from the notes inside it what was done, how and when.'}});
+I18N.titles={de:'Watchtime · Kriimaar',en:'Watchtime · Kriimaar'};
+const KEY_WT="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";
+const KEY_AUTO="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";
+const KEY_SE="U0JBRR+LCAAAAAAABADtXFuToli2fp+I+Q8V/dqTdRA11RMxD0p6AS+Z3gA5NQ/cEklBaMELdvQ/O2/nj5219gYFBDOrqmfOdJ+qCCvVvdmsve5r7Q9//etfPn36yTVD9af//PQrfoCPW9U14eNP83BnwlvHdM1tGHyS1FBfh7ZrfuJd39uFn37+tNwa3qfefrsJbW/76fV//nt3nfXT3+Ll1H249na44HBn266q7i5DB3MXwJU4VvnMfGYuA4YZ6DvbD+PB9FrebL9t6/HIdu84yZhrb21374qXNXEQx34jM34y1MwuVbJGAN/8F/3mUzJEhm0Db6yxj0yjxTQfmlq9/lBrPNYfVLbFPjTruv7YUB9bteqFaHLZL3tzT5jHxP8eCv5L/mWuNLeq5ph413C3NzMjJ93ZG2Zv57kDOwi9XQSTXlUnKJv1Ym4Ne2sVzUpkW/n8ad69EWmGIGvn7X2ceyNSyj/nqEYBCKPoNjsVNMO9iOlmXPe2+n63A70qGg13tmWBGNOyycmHqo+6s5FpOPHX3/6WG6USrDZZRmOqlYda01AfarXG60OzUXt9qDa0xyrbrFerWmZflIDIRy41GDY/UiqlqwyCRK3+kR797frhH+m9BnutfauJRbuNRZdS+ctQ1lyKZuzMVxPYrZs3tyHDnz9/+ZJ+STbI7xh8+TK29Z0XeK/h50l38eVLbwdEHL3d5rH25cuhBjZbBd62vnxxA93bObb22XCcPDt/j/XnURCa7ueJGX4ehKFfdpsvXybmMQRm4opC4G3/yfTg6tnF/5HnvBaFJucZxOoMeeJrrm4tq87Z6Ivh85EZ5r8bbSYHrX9yVtWZr7H182hjOJorRqo0bjxN/YrOOnsl6ixMecIoErNfuCIz2qwZY9AuHBf7Ys3g6nNFMipavxfN5PVRd8UzzDtoW1zTm3DbTmXlnvxV1HmDOWc96jwtu2tBg+80dwnjwYSz2xbPdY6GJARAi7VyWweN6/TMvvhmyDNnyG2SObgm/G3T12AWmVNmePmcH6evwyjqcLrbWiv9yVqvzhzd7ngae3I0K30tfRluL+L7QqSxvc2K7SHfIv6JsaaVDj9yZlVVnr2pXcMxutk5QGPBvTu+Yre91VY4rKTZ2wr5JvPWy4KxtK0YwB6br1znbAwElNN+Lk+eDekULKpCT5M7jDlf21m666LOitGi39qqUs0fTm/pN4+335FXdzKdc/Wxxho9HejRbcteMstwLlWOWlVgnu0bHu1VaeIZXGerSEpFc2eOZtfs4SKRV/7ViRR5VtHdmqW4vUBnl0X8aBGdyF8/mDC6S3TrTe339qCTQbxH62XeuccD0MHWWKsajr6BEAWyU6Xe3uAs/7mADwX0xDrd9qjcJ6B/IlzfbvH9umNEHd4YzI5T9uQrUp0BGfsFaxTpHHmNoqYlyhOgudJRWFy3cwYePSpSrYyHYCOOo22n+1lfdFeyGBg9wdFl0YG984rU2yiyAHYLfznLzq7NBzwnLECXnJVUQT7ZWnUaimyPWbFrRoXvRksn1PutCOYS/tyje1mdRXC/cCaBnSBPBuNwyq7Xmlt3NK4izLjOGvS6orjivmwdoBnkUd8CX72VVN8r0klQkLfEftLfrZN9B6m5qKu+ZhfZFX2p0soaXnSnLuhMHfzQ6UXfiKE+mNWHmfsWye4dm6EyAX9l7VHfZjLYfJX3eGfSu/DyybPmrIi+7AM8u2c/Mc/A5xqysOf7ylobTJwiPaY2w0y4Av+Vs3Xws8phyE0zts73DdSntb6dOQZXA/p7+5V0fOQHYc7+6i1+cLTItctpZnwuzVr8HdlQfzmB+DKbKPLkvJIMB+loCj+rFtdZzOYVeYW+dACxSPpG2uyjBfpeUebJ302j0L9c40DmnrN+D+JYDXy+GK1kwVYkh3we9tG+QE8hvhjSslRviM8A/YM1zxgjlgPw8yzEv4qxNkD3jL4TKvNC3QZ9PFoQEzbgdxl9KzpEL8rkyTUPfFeMwM5tzXXOPPDBdEUf7f5d2wN/oFfBj+B+gP81P+rxPdBfMU1jRYB4c9C3RMYQz3qMHtUDjG8KyhlkoiFPpFqQGj+vZMVRBoyl4J77og9+xtFxn6k5KuscYWzzOn96OvSBlu3kCPvdI+0j8J0oa7CTvSHVIX5AfjKga8I+QU5TC3ygq42fWZ0V1jrEn1J7eFfnezbSCTQGWnVyhr3sgU68Z0UbfIMuX/j6NTp4jZFkbpEvQLtOffeazW/eiP5ybQ9yrTcFcgRVaoGvEGvDd/OgWz8mQLyYXWVvzVzR0yCXAZ1sKLK1n7EiIw6cozK3/NGmvgafRvyByYq10QZiTHWyBp6W8I7ebwlyVrrJ3KXH74eq9/xz7S265wMUR+2ftsBrsPnTmuiK3QHZ6pY+GIEeKSQXAf0htpP8LfStICdjIEaa3XFX0umc5/mFvxl/ivaW2OoRfR/YOvAZ7WbZm87nufxx0IlUWQF7Wl7t7jbGZXKJa65xLIqTSewryXsv+RLo0hFypPaGdzFP75yf7eZhJXf80RbniCizQIHYr21n55EL9jVv7WD8uJq32LHduvhUPWo1Vkms6p4OCuRFr3O+7L6/6CzwA3zeKt4P1hJGLx5nemdTqr8Nke/chujRVDbWkDtDXoK6hHMT+8nnalcbwevmW6DZidetYEwEOff9s8bWMN95VaVpKqZm8stbfy9Bjgj644M/41Gv+iL4ANBPrsNCXrXWXcFBGovkOuw7mL/FPhF9OflMfSDIUEWZDiY7FXibGq9oW9gn2wogxmyG884Uctk39CHpvGzYJbJ7iuPElafX2sC6ysbZwPe2BmvyJE6V6Egf+AY6ENNxRJ+1ZJ1HZQ5x4Kl7HD9l7WAF8tSr01TcUNY6sfkl6pdtpOgFm36D+nGjRzn9aGfk6ONeNFZxIV9nUFfGwCetj7m8uEk+62yPBX7hPY643yReJOOZuIAx7Kl9418xX51C3aTMO4skhiuge+jrMX7k822DXfsayrQovg+K8jPwB71MvOwsuxsSm8Dv3Kz/O9voUWNRb8cHk035kwFzSMvkBXRGg72/yOFV1jLjJvyH7w+Kq2D90eLfivzkv8K26auoTkZdMfotBnI9rPkGQOcQ6ZjD/UWoJ0FOnoq+AHI+3mkxGuQNWlzH5NendcHsADlIwD8dUWesV4hb9Pr6E+gu3MfZ65Fly5xQwXpSrxztZxfrh6M9nINst1hHBSWxHPVBBF7y4YIVflGkkAHdWxvy2Jo7k5eF3XFM0K2VtPbBr5T3GQa4hkByRxJrsZ7bTvrgI8Il9lH6YJNssu/y/oJBrhvvp2yrgnzE/sKYe2cP/RP2JNCmdsBvyoMIeFOFmPRUnIuinc3Bj6F90dqzxG+mXorbwpqI5CypPRPZom9KePBVvYwL/4U91rp8v7XBvgrGabXfCu7U1xd/SnjmJv7tqm/L2P8lOkfmbS7xhvBJc3vgA4p1j/LWcXlufa+vk1pn48c8oHuJdaEw7qV4N+Latsw6m3t567v1ceq+qPNmdPW/wyho0BgCsRNyq+eopHfDFcZaC3s3C4y3qBc22sYkAD9eqCOJPqJctPgaPUr6BMh7zOtLZRKCvCpGXzy/y4t+BffCKGCnL0/URr5zzwLsDWJOGPfHIN6DvYNP3t/RwQD3wg9S8UScOBh/lcEYdfG6H86zJm+38S5Hw9JgHYgDVhjb5NqQlODYUM53aGBXYC/GwPCRBnod8pvUUPF6a7QJ0msDH+xqjFCPe25eynbeswEmXousA7qNfTX0scQfJ7nGaOOcF9gP7baiGdQAxmDjZWmrx3RMfcihGpizYZ8ZcnDMHXbDc0DyFwNzHWnZuNsbIbk9xqcZ1BiQ+0EekM7F+P76ADVQaV0N+QvGSMfsY0+d9A6TnKRwPviAOuQUliKvfR377qDjIGNSG9H6KrVPB3MuoQ77bJL7GtlfAhS+VmQ9ClifS2kY0X2aKG+f5UdY48C6pQIfb7Gkr7w2ZAE8Ck9L/7+vp5jHzX2XySngPX4p2aGH8OoU73eUwR7Aht0safigQ/pMSpXn6xky8N8MH3daF583Z0edVKTlvH9Y/xO7SlTe5bp3GCyJvl/FHy8J95vucp24hhl8flmPrG3OMeDHOCNSfIpH88zIAbvcnXWzX0vvUdufa1zYtrTufkoX9eU11+LOAaGItAPdcj7OVJpLU3iQLyeIUEtX1HmlxhrJbnhtZYOHXNeVj+DLO1OGPdSWjzkqwrtaRCffK0vp5gfNiAX25J+iDx5g7wc6k9c22nBmC4Pxr88Oyddj3ydt9ea7Bxtee75Msff9HqvvV16n5EzqaxY0LMq+P0ooac+gPyvog8m2lhk9nHMs57ttn3N22/4LEDe9008JnXrlb+wzuz7eEvqzfpS3zrTFeR1sM4ltwIfH65cMcrn8yor1odzqA2rYlKvxn25aWlvAP0/5FTMZfymf0PyiW/iSezjr3Tj50sOlq2T0jU62celn5SVPV3ze/hC86Nk36W6lfQln0p1RYW9Q45cr8L+sS9a0aPOcMm0nrGPCHtZq30H4vs1BuqwP8jdsca57PWSo24gnksC8aHfwx96/kbtgvTSY5tD/w9x68ITAWyO34Z45uyYXL2ns5O13gee4dpyReeJLXqPcu90HoItvkRrXe5DjiDi+3zOftUnjd4H8n/xjfTwo/Z/XOx0Y0Qgg6NeCU7yvB7bR/uR5/jjHZsksWO0bNmqK+5Qr1Yy5HRdf7FgauFUFqKVvLH0fi/S2UJej1V5wrwk/DzX7taIV9skvuvS08jWUHHeR+tFzEP2iqxbC8xlnk6JnH6+OcuOe1kkBjFAC+gJyiiupwXMfc1uyx0S2dB6rsj/0XqEjkNOCTWbZb1w7SPkdNe+OKXtJuclfgp55fbqS3I+hD2jWMc2lKYFu/J4J8C+cIbWQjrya32QDlIDUz8SriBPV6CuA98Ba0BtA7W4hrn/vMOpBMvQYiDH3OV686TXAXQdjb6V9L0OK9dHXMbCALroWQ1zyulq3PNzQN7OBmqG2M7wrJqeFcI6DrUH2j9LncNn9oA1OcR4QoeK/cAcL4ZR+wS5pM8/XXomY/AXW6AX6qPNbhhtMusV1enYr4QY+3bREyf05ZIcicoDz2Z62Dv1ab5MYy3p+SVnoYghYesM1kfKIsidjaTXGpMeiFA56ULUdgUbeT7xgedJPnJ7D5pDF9V/+XyNYjqA7yC7LW/TtYCmsyrNnKR/gPvmpZysiuqU4jzult40XYVn91m6zCihC/kBeftg5pH666kNaxGf9IY9vRXGAJQR8DPWyeJ6qpjON7ImZ7SEnE4U+fgUrRtydsUx4Tv1YzyP7OnIcyv3lvYa2dM3nu0neXVH6U/jGAM5piQkvhDsGft7Eya2DbC/DdYdeXvd8U9d/72z/dxaaPvhuLxWuVPLXWVTUk/c1Q15rluCvbr6oNt+YUqG+Vq60EeSMbTH1+nf/34DevR3pu65vu2YBZjMGGboqNE8VHdFqE0yI1AP5swM9k648MQYnXlvbmZWEW6RgjgbbMXQDRURuJXaQ83Q9QftlW08NGqP2uNrg9Xqrceb/RxN21ojpcxnpgTg2cJ/N3xQEZfKGyUU3UeA2lvDPOE9P4L91D3HUf3ANPoItc1iRq9w1gJUcqVuPKqP1Qddrz0+1Jpa9UFtNGsPRpVlqsxjg31s1f6QqGQ2h0pGfPmfEJOs1wyj+ajVH161RhPUudF4aFbVykPtVX3UVL3VVGutH5jkPwom+V+IeP4BNf4BNf4nQ42hXA21quL8gBr/P4Aai4KjSS02OSb9ATX+UDlSDDVOeLn440CNE1v/d4Qaz8C+QJciWHv/bwU3juVQ5GupHMixRQytxWOLDsQFPD6YpO/jpeBjKR5OKVzsyUt85rt2CToI/ljYqzLESakOvsTZfgRakbSoMZYJ3Mje8ksi1+yjCKCzfQWPkR3tzbPMKoVRj9wYlkJhxQG+x7bvZXxLj6Ne5x2ES7kIX0AIZWo8huCBzoyfm9hW16udyADfkIMvZ46wYL0kBl2Oz1fgp9MQ5ZV0QpvbmKIPdLdAXgK2yX0Yg/L566HJVxv5AU0ugSZDvlc5GODv/q+hyVmf8QOe/AOe/OeDJ4/io4msn2v6ZXFmPpgxejfRk841ryrIsWn8EQ4aSx97KTsGTGDIlN4O2tZClX0CHRkv2secLPA44GykYX3gsxcEVodHKEIxrCQHfy046rrCKOjxTMLXC0yZ8pVAf4IUX5PxDF8TKHOOr2TubQxG2+4FCE8G/+QbqAN91LcJ+L/ebQ48MDwVckCEWhEf87EaNaN3U7Ej4DGwUppjp2GTQkDjuuChv9DP3mHE9o7qvH5O6gHw0yHaHMRYkA9zUGFc73cPxht/0Pstn9h6NZvfjaopONyiBTpV8Y2nSkPv97aKOPFNV2wJbgyJge8TWPOND8jRS1v6mFslelrHY/cERtLRq85+Fa3RT1G77/aqK8zLZN4bzsnceQxF8Ar9d7voCAp1N4Efp+CcWDf2bn1EDNMpztdjGB2FO7eb5BhkcGrGx7wI+YU8qgc8HUOtcLRpS36i82/+Hut7iH8Z+E+JPtw7qkbI1X24F81L46OUuOai8NzzDOp/TURf2sHHEZJ934Ft0+uwf2QgHy9HVvf2cLXP4ZmxcnDocgh313eIj6VQ7nxeXiAL5YAxC2F0w9SeiWzxiPHCg685Crvyn8KBwfdgH6jrdN+DIl4f1fg2+HAKxnmv10L6Snehmik46DCGqmmJDy6HbqV4RyD9vlIC50/ZwVdAqgNLZ0NfH+DxbrArOjq+20vJQEKdPd+NocNQr6FtgFzuwWtj6GMKbjwvgxNlZXKFP7/LiytMmD7i8N17nsPeIObsDIRmYJ0qVcDmIO7c6bvEUKkS+CaThnP/wj+tCuJdju8x/HIkUpu8Pv5ZTgN9rCDul8a2nEBsk/Uu0BmEirgtzlzSHDIDgX/HBvJwaYTPEB+L/vguzD5D2z6mYxND7rNQyq+HoHMK6ZGvsQZ0so8plfeeqR5RSFkWmpzPsdI+bBaZCL+Gmg6hSQnMgdSgJGdO71OQwJcCn53NC73Pz2V8GBFYkvCMMkjVSoXwDkr3hMLEBu/r9PJSj3UOK7tjI+RPJY9rt+/KOsOT66MCYLOY48zqEtaC0Xf6lcGkstqmoIgIH4ofe8bYh3o85gpiScbH/IBX/9nh1fA5p3ebDOQieZ/00kmcFg18FP8DeVznCH4L7G/mpOq20sehcjDDdK23U+TNXdhhDLFE35zANye0Z7SOoaLtDeawZiWBY8eQsPmarP0qHm0C63zzCexa5nhPqtR13mF+QXjnTa/n2ltJoNULQ5qQx2/RRhLI56wqHAy5c5bOPWPkJLYE69h8KZ/xscRv4jGtLwsfb/xG3mLNDnFOqC8JlHTplUJzk3UpfBv+tipGXPP/DrBi8ojWt/GExqEr3fj5OyH+dM3v4Uv8mFbSByrVrQSqXqorEuwd83jj93kEAvLeik3i67/jIxBvTQ9sFHyxg+9/90cgxly5TcZnlC8IzVOrqFdXaPtoSSGuF6huAa/zMOi7dWyu13gX1p56zBdy6SrfPUGMnTYTOb3YNz1G+jg0reUpvJqcD9Gan0Kn1y+KnX18+cb/0ZiVg20fSS5ztWtK201eTv0U8EpYm2IKJnoL+dbIuViG1kI6cmt9kA5apxM/ouF5u0SwDEfyCAU5O2t5eB46dR1b6zsHo7921Fz9TaHjFwgs/RmCD0AxY2xIHoqL8Yv26ufHYpjyDS+VA9QLHqVjg9dnecEFFtwbodiXvs4CH02szjyEYUNe8/5PFGBvHuulKNGTuqaKTMmj30QeF6j4kOb0Cfz6ur/FV8OAdZmj0NI8HLrgHiSv+2pId8THaxXA4LleXlYfhnMX0Jum6w5sPaarGiR03cCWh7dwYZDRppHoZEnNV0hnAuF9netfhQ+Job7h6J0aNwsJJtD5PO0/kz2VnlHfxxxcenN4BhDr+rIq2okvHObg3XgmwXPMjb3iIwrDefm5aJzj38DcR4tu6TV36s0M9P4j12UfQ2C2FLqeh+F/Zd2Q8pGU12CPW+YPBbeuarreqDH6Q6VqNB5qtRrz0GzolYc6azZYpt6qmWztzwa3pm+S+RQxTackX4G0XHVrZL88mlrg6RsznJu7QwwPvh3kHBt/QjsziODl3ZWI+Eeqr7+IzdboN+YJf5nZNBBCnfxQdoNy//Ynr+nPaD+ojr9WP1d++utffvtfzE0yVOJbAAA=";
+const tplCmd=`using System;
+
+public class CPHInline
+{
+    public bool Execute()
+    {
+        // ★ ANPASSEN: Variablenname (muss beim Counter und Leaderboard identisch sein)
+        const string variableName = "{variableName}";
+
+        if (!CPH.TryGetArg("userId", out string userId) ||
+            !CPH.TryGetArg("userName", out string userName))
+        {
+            CPH.LogWarn("Watchtime: Command-User konnte nicht ermittelt werden.");
+            return false;
+        }
+
+        long totalSeconds = 0;
+
+        try
+        {
+            totalSeconds = CPH.GetTwitchUserVarById<long>(
+                userId,
+                variableName,
+                true
+            );
+        }
+        catch
+        {
+            totalSeconds = 0;
+        }
+
+        TimeSpan time = TimeSpan.FromSeconds(totalSeconds);
+
+        string watchtimeText;
+
+        if (time.Days > 0)
+        {
+            watchtimeText =
+                $"{time.Days} Tage, {time.Hours} Std. und " +
+                $"{time.Minutes:D2} Min.";
+        }
+        else
+        {
+            watchtimeText =
+                $"{(int)time.TotalHours} Std. und " +
+                $"{time.Minutes:D2} Min.";
+        }
+
+        // ★ ANPASSEN: Deine Bot-Nachricht ({name} = Zuschauername, {zeit} = Watchtime)
+        CPH.SendMessage(
+            {msg},
+            true
+        );
+
+        return true;
+    }
+}`;
+const tplCtr=`using System;
+using System.Collections.Generic;
+
+public class CPHInline
+{
+    public bool Execute()
+    {
+        // ★ ANPASSEN: Abstand der Zählung in Sekunden (sollte dem Update Interval aus Schritt 03 entsprechen)
+        const long intervalSeconds = {intervalSeconds};
+        // ★ ANPASSEN: Variablenname (muss beim Command und Leaderboard identisch sein)
+        const string variableName = "{variableName}";
+
+        if (!CPH.TryGetArg("isLive", out bool isLive) || !isLive)
+        {
+            CPH.LogInfo("Watchtime: Stream ist offline, nichts wird gezählt.");
+            return true;
+        }
+
+        if (!CPH.TryGetArg("users", out List<Dictionary<string, object>> users))
+        {
+            CPH.LogWarn("Watchtime: Keine Present-Viewer-Liste gefunden.");
+            return false;
+        }
+
+        foreach (var viewer in users)
+        {
+            string userId = viewer.ContainsKey("id") ? viewer["id"]?.ToString() : null;
+            string userName = viewer.ContainsKey("userName") ? viewer["userName"]?.ToString() : null;
+            int role = viewer.ContainsKey("role") ? Convert.ToInt32(viewer["role"]) : 0;
+
+            if (string.IsNullOrWhiteSpace(userId) || string.IsNullOrWhiteSpace(userName))
+                continue;
+
+            // Den Broadcaster selbst nicht mitzählen.
+            if (role == 4)
+                continue;
+
+            long currentWatchtime = 0;
+
+            try
+            {
+                currentWatchtime = CPH.GetTwitchUserVarById<long>(
+                    userId,
+                    variableName,
+                    true
+                );
+            }
+            catch
+            {
+                currentWatchtime = 0;
+            }
+
+            CPH.SetTwitchUserVarById(
+                userId,
+                variableName,
+                currentWatchtime + intervalSeconds,
+                true
+            );
+        }
+
+        return true;
+    }
+}`;
+const tplLb=`using System;
+using System.Collections.Generic;
+
+public class CPHInline
+{
+    public bool Execute()
+    {
+        try
+        {
+            // ★ ANPASSEN: Variablenname (muss beim Command und Counter identisch sein)
+            const string variableName = "{variableName}";
+            // ★ ANPASSEN: Anzahl der angezeigten Plätze
+            const int topCount = {topCount};
+
+            // ★ ANPASSEN: Bots/Accounts, die nicht im Leaderboard erscheinen (eine Zeile = ein Name)
+            List<string> excludedUserNames = new List<string>
+            {
+{excluded}
+            };
+
+            TwitchUserInfo broadcaster = CPH.TwitchGetBroadcaster();
+            TwitchUserInfo bot = null;
+
+            try
+            {
+                bot = CPH.TwitchGetBot();
+            }
+            catch
+            {
+                bot = null;
+            }
+
+            string broadcasterId = "";
+            string botId = "";
+
+            if (broadcaster != null)
+            {
+                broadcasterId = broadcaster.UserId;
+            }
+
+            if (bot != null)
+            {
+                botId = bot.UserId;
+            }
+
+            // User ermitteln, der den Command ausgeführt hat
+            string commandUserId = "";
+
+            if (args.ContainsKey("userId") && args["userId"] != null)
+            {
+                commandUserId = args["userId"].ToString();
+            }
+
+            List<UserVariableValue<long>> allUsers =
+                CPH.GetTwitchUsersVar<long>(variableName, true);
+
+            List<UserVariableValue<long>> validUsers =
+                new List<UserVariableValue<long>>();
+
+            foreach (UserVariableValue<long> user in allUsers)
+            {
+                if (user.Value <= 0)
+                {
+                    continue;
+                }
+
+                if (user.UserId == broadcasterId)
+                {
+                    continue;
+                }
+
+                if (user.UserId == botId)
+                {
+                    continue;
+                }
+
+                if (string.IsNullOrEmpty(user.UserName))
+                {
+                    continue;
+                }
+
+                if (excludedUserNames.Contains(user.UserName.ToLowerInvariant()))
+                {
+                    continue;
+                }
+
+                validUsers.Add(user);
+            }
+
+            // Absteigend nach Watchtime sortieren
+            for (int i = 0; i < validUsers.Count - 1; i++)
+            {
+                for (int j = i + 1; j < validUsers.Count; j++)
+                {
+                    if (validUsers[j].Value > validUsers[i].Value)
+                    {
+                        UserVariableValue<long> temporaryUser = validUsers[i];
+                        validUsers[i] = validUsers[j];
+                        validUsers[j] = temporaryUser;
+                    }
+                }
+            }
+
+            if (validUsers.Count == 0)
+            {
+                CPH.SendMessage(
+                    // ★ ANPASSEN: Nachricht, wenn noch keine Watchtime-Werte vorhanden sind
+                    "{empty}",
+                    true,
+                    true
+                );
+
+                return true;
+            }
+
+            // ★ ANPASSEN: Anfang der Leaderboard-Nachricht
+            string message = "{header}";
+
+            int amountToShow = validUsers.Count;
+
+            if (amountToShow > topCount)
+            {
+                amountToShow = topCount;
+            }
+
+            // Top 5 ausgeben
+            for (int i = 0; i < amountToShow; i++)
+            {
+                UserVariableValue<long> entry = validUsers[i];
+
+                message +=
+                    (i + 1) + ". " +
+                    entry.UserName + ", " +
+                    FormatWatchtime(entry.Value);
+
+                if (i < amountToShow - 1)
+                {
+                    message += " | ";
+                }
+            }
+
+            // Prüfen, ob der Command-User bereits in den Top 5 ist
+            UserVariableValue<long> commandUser = null;
+            int commandUserRank = -1;
+
+            for (int i = 0; i < validUsers.Count; i++)
+            {
+                if (validUsers[i].UserId == commandUserId)
+                {
+                    commandUser = validUsers[i];
+                    commandUserRank = i + 1;
+                    break;
+                }
+            }
+
+            // Falls der User nicht in den Top 5 ist, am Ende anhängen
+            if (commandUser != null && commandUserRank > topCount)
+            {
+                message +=
+                    " ... " +
+                    commandUserRank + ". " +
+                    commandUser.UserName + ", " +
+                    FormatWatchtime(commandUser.Value);
+            }
+
+            CPH.SendMessage(message, true, true);
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            CPH.LogError(
+                "Leaderboard-Fehler: " +
+                ex.GetType().Name +
+                ", " +
+                ex.Message
+            );
+
+            CPH.SendMessage(
+                "⚠️ Leaderboard-Fehler. Bitte Streamer.bot-Log prüfen.",
+                true,
+                true
+            );
+
+            return false;
+        }
+    }
+
+    private string FormatWatchtime(long seconds)
+    {
+        TimeSpan time = TimeSpan.FromSeconds(seconds);
+
+        if (time.Days > 0)
+        {
+            return time.Days + "T " +
+                   time.Hours + "Std";
+        }
+
+        return ((int)time.TotalHours) + "Std " +
+               time.Minutes + "Min";
+    }
+}`;
+const escWt=v=>String(v).replace(/\\/g,'\\\\').replace(/"/g,'\\"');
+const F=id=>document.getElementById(id);
+function wtEditor(codeId,key,ids,build){
+  const code=F(codeId),fields=ids.map(F);
+  function render(){code.value=build(fields.map(f=>f.value));try{localStorage.setItem(key,JSON.stringify(fields.map(f=>f.value)))}catch(e){}}
+  try{const saved=JSON.parse(localStorage.getItem(key));if(Array.isArray(saved))fields.forEach((f,i)=>{if(typeof saved[i]==='string')f.value=saved[i]})}catch(e){}
+  fields.forEach(f=>f.addEventListener('input',render));
+  render();
+}
+function wtBuildCmd(v){
+  const vn=(v[1]||'').trim()||'watchtimeSeconds';
+  const out=String(v[0]||'').replace(/\{name\}/g,'{userName}').replace(/\{zeit\}/g,'{watchtimeText}');
+  return tplCmd.replace('{variableName}',()=>vn).replace('{msg}',()=>'$"'+escWt(out)+'"');
+}
+function wtBuildCtr(v){
+  const n=parseInt(v[0],10);const sec=Number.isFinite(n)&&n>0?n:60;
+  const vn=(v[1]||'').trim()||'watchtimeSeconds';
+  return tplCtr.replace('{intervalSeconds}',()=>String(sec)).replace('{variableName}',()=>vn);
+}
+function wtBuildLb(v){
+  const lines=String(v[4]||'').split(/\r?\n/).map(s=>s.trim()).filter(Boolean).map(s=>'                "'+escWt(s)+'"');
+  const n=parseInt(v[1],10);const top=Number.isFinite(n)&&n>0?n:5;
+  const vn=(v[0]||'').trim()||'watchtimeSeconds';
+  return tplLb.replace('{variableName}',()=>vn)
+    .replace('{topCount}',()=>String(top))
+    .replace('{excluded}',()=>lines.join(',\n'))
+    .replace('{header}',()=>escWt(v[2]||''))
+    .replace('{empty}',()=>escWt(v[3]||''));
+}
+wtEditor('wtCmdCode','kwt-cmd',['wtCmdMsg','wtCmdVar'],wtBuildCmd);
+wtEditor('wtCtrCode','kwt-ctr',['wtCtrInt','wtCtrVar'],wtBuildCtr);
+wtEditor('wtLbCode','kwt-lb',['wtLbVar','wtLbTop','wtLbHeader','wtLbEmpty','wtLbExcluded'],wtBuildLb);
+document.addEventListener('click',e=>{
+  if(e.target.id==='copyImportWt')copyWithFeedback(e.target,KEY_WT);
+  if(e.target.id==='copyImportSe')copyWithFeedback(e.target,KEY_SE);
+  if(e.target.id==='copyImportAuto')copyWithFeedback(e.target,KEY_AUTO);
+  if(e.target.matches('.copy-code')){const a=e.target.closest('.action');if(a)copyWithFeedback(e.target,a.querySelector('.action-code').value)}
+  if(e.target.dataset.tab){document.querySelectorAll('[data-tab],.action').forEach(x=>x.classList.remove('active'));e.target.classList.add('active');document.getElementById(e.target.dataset.tab).classList.add('active')}
+});
+I18N.apply();
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Kriimaar Streamer.bot Toolkit Icon:
+       dunkler Tile-Hintergrund (Seiten-Farbpalette #0c0c0e),
+       Twitch-Farbwort LIKE Augen (Lila #a855f7 und Grün #55e58f der Webseite)
+       geformt als stilisiertes K im Glitch-Design. -->
+  <rect width="64" height="64" rx="14" fill="#0c0c0e"/>
+  <g>
+    <!-- Stilisiertes K: klassische K-Arme als Streaming-Wortmarke -->
+    <path d="M18 12h8v40h-8z" fill="#a855f7"/>
+    <path d="M30 32l14-20h-10L22 32l12 20h10z" fill="#55e58f"/>
+    <!-- Kleiner Glitch-Split wie beim Twitch-Verbindungszeichen -->
+    <rect x="30" y="26" width="4" height="4" fill="#0c0c0e"/>
+    <rect x="30" y="34" width="4" height="4" fill="#0c0c0e"/>
+  </g>
+</svg>
