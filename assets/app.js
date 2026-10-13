@@ -55,29 +55,85 @@ const THEMES=['system','light','dark','oled'];
 let theme=(function(){try{const t=localStorage.getItem('kriimaar-theme');if(THEMES.includes(t))return t}catch(e){}return 'system'})();
 function applyTheme(){document.documentElement.dataset.theme=theme==='system'?(sysDark()?'dark':'light'):theme}
 function setTheme(v){theme=v;try{localStorage.setItem('kriimaar-theme',v)}catch(e){}applyTheme();if(panel)renderPanel()}
+/* Akzentfarbe: Reflectionslos in localStorage, sitewide via Inline-Style auf :root (--p).
+   Override-Style ersetzt die hartcodierten Lavendel-Hover der injizierten Navigation/Einstellungen. */
+const ACCENT_KEY='kriimaar-accent',ACCENT_DEFAULT='#a855f7';
+let accent=(function(){try{const v=localStorage.getItem(ACCENT_KEY);return /^#[0-9a-fA-F]{6}$/.test(v)?v.toLowerCase():ACCENT_DEFAULT}catch(e){return ACCENT_DEFAULT}})();
+function applyAccent(){
+  document.documentElement.style.setProperty('--p',accent);
+  if(document.getElementById('accent-override'))return;
+  const st=document.createElement('style');st.id='accent-override';
+  st.textContent='.pn-btn:hover,.pn-menu a:hover,.pn-group>.pn-head:hover,.ks-toggle:hover,.ks-btn:hover{color:color-mix(in srgb,var(--p) 45%,#fff)!important}.ks-btn:hover,.lb-close:hover{border-color:var(--p)!important}.ks-btn.active{border-color:var(--p)!important;background:color-mix(in srgb,var(--p) 12%,transparent)!important;color:color-mix(in srgb,var(--p) 45%,#fff)!important}';
+  document.head.appendChild(st);
+}
+applyAccent();
 /* Pageselect im Header folgt immer der aktuellen URL (heilt restores nach Navigation) */
 function applyPickerStyle(){const t=document.documentElement.dataset.theme;document.documentElement.style.setProperty('--kriimaar-picker',(t==='dark'||t==='oled')?'color-scheme:dark':'color-scheme:light')}
 applyPickerStyle();
 new MutationObserver(applyPickerStyle).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
-try{const ks=document.createElement('style');ks.textContent='.nav select,.sb-nav select{color-scheme:var(--kriimaar-picker,light)}.pn-drop{position:relative;display:grid;place-items:center;min-width:112px;border-left:1px solid #26262c}.pn-wrap{position:relative}.pn-btn{display:grid;place-items:center;width:100%;height:100%;min-height:46px;padding:0 13px;border:0;background:transparent;color:#8b8b96;font:11px "Courier New",monospace;text-transform:uppercase;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pn-btn:hover{background:#141419;color:#d7c3ff}.pn-menu{display:none;position:absolute;top:100%;right:0;min-width:260px;padding:6px 0;background:#0c0c0e;border:1px solid #26262c;box-shadow:0 16px 48px #000c;z-index:90;text-align:left}.pn-wrap.open .pn-menu{display:block}.pn-menu a{display:block;padding:9px 16px;color:#8b8b96;font:11px "Courier New",monospace;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;white-space:nowrap}.pn-menu a:hover{background:#141419;color:#d7c3ff}.pn-menu a.active{color:#55e58f}.pn-menu a.active::after{content:" ✓"}';document.head.appendChild(ks)}catch(e){}
-/* Seitennavigation: eigenes Dropdown mit echten Links (kein <select>, keine onchange-Fallstricke) */
+try{const ks=document.createElement('style');ks.textContent='.nav select,.sb-nav select{color-scheme:var(--kriimaar-picker,light)}.pn-drop{position:relative;display:grid;place-items:center;min-width:112px;border-left:1px solid #26262c}.pn-wrap{position:relative}.pn-btn{display:grid;place-items:center;width:100%;height:100%;min-height:46px;padding:0 13px;border:0;background:transparent;color:#8b8b96;font:11px "Courier New",monospace;text-transform:uppercase;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pn-btn:hover{background:#141419;color:#d7c3ff}.pn-menu{display:none;position:absolute;top:100%;right:0;min-width:268px;padding:6px 0;background:#0c0c0e;border:1px solid #26262c;box-shadow:0 16px 48px #000c;z-index:90;text-align:left}.pn-wrap.open .pn-menu{display:block}.pn-menu a{display:block;padding:9px 16px;color:#8b8b96;font:11px "Courier New",monospace;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;white-space:nowrap}.pn-menu a:hover{background:#141419;color:#d7c3ff}.pn-menu a.active{color:#55e58f}.pn-menu a.active::after{content:" ✓"}.pn-sep{height:1px;margin:6px 0;background:#26262c}.pn-group{position:relative}.pn-group>a,.pn-group>.pn-head{display:flex;align-items:center;justify-content:space-between;gap:14px;cursor:pointer}.pn-group>.pn-head{padding:9px 16px;color:#8b8b96;font:11px "Courier New",monospace;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}.pn-group.has-active>.pn-head{color:#55e58f}.pn-group>.pn-head:hover{background:#141419;color:#d7c3ff}.pn-arrow{margin-left:auto;color:#656570;font-size:9px;transition:transform .12s}.pn-group.open>.pn-head .pn-arrow,.pn-group:hover>.pn-head .pn-arrow{transform:rotate(90deg)}.pn-sub{display:none;position:absolute;top:-7px;right:100%;min-width:200px;padding:6px 0;background:#0c0c0e;border:1px solid #26262c;box-shadow:0 16px 48px #000c;z-index:91}.pn-group.open>.pn-sub{display:block}@media(hover:hover){.pn-group:hover>.pn-sub{display:block}}@media(max-width:800px){.pn-sub{position:static;display:none;padding-left:14px;border-left:1px solid #26262c;margin-left:16px;box-shadow:none}.pn-group.open>.pn-sub{display:block}}';document.head.appendChild(ks)}catch(e){}
+/* Seitennavigation: eigenes Dropdown mit echten Links (kein <select>, keine onchange-Fallstricke).
+   Struktur: flache Links + .pn-group-Container mit .pn-head (Label + ▸) und .pn-sub-Untermenü.
+   Desktop (hover): Untermenü folgt dem Cursor; Mobile/Klick: erster Tap öffnet das Untermenü. */
 function initPageNav(){
   const wrap=document.querySelector('.pn-wrap');
   if(!wrap||wrap.dataset.ready)return;
   wrap.dataset.ready='1';
   const btn=wrap.querySelector('.pn-btn'),menu=wrap.querySelector('.pn-menu');
   if(!btn||!menu)return;
-  let cur=null;
   const here=location.pathname.replace(/\\/g,'/');
-  menu.querySelectorAll('a').forEach(a=>{
-    let p='';try{p=new URL(a.getAttribute('href'),location.href).pathname.replace(/\\/g,'/')}catch(e){return}
-    if(p===here){a.classList.add('active');cur=a}
+  let hereHash=location.hash||'';
+  /* Aktive Markierung: auch Sub-Links. Der pn-btn zeigt den Namen der aktiven Seite (bzw. Gruppe).
+     Nur EIN Link wird aktiv: exakte URL + exakter Hash (oder Seitenlink ohne Hash, wenn die URL keinen Hash hat). */
+  const mark=()=>{
+    menu.querySelectorAll('a.active').forEach(a=>a.classList.remove('active'));
+    let found=null;
+    menu.querySelectorAll('a').forEach(a=>{
+      if(found)return;
+      let p='';try{p=new URL(a.getAttribute('href'),location.href).pathname.replace(/\\/g,'/')}catch(e){return}
+      const h=(a.getAttribute('href').split('#')[1]?'#'+a.getAttribute('href').split('#')[1]:'');
+      if(p===here&&h&&h===hereHash)found=a;
+      else if(p===here&&!h&&!hereHash)found=a;
+    });
+    if(found)found.classList.add('active');
+    return found;
+  };
+  let cur=mark();
+  menu.querySelectorAll('.pn-group').forEach(g=>{
+    if(g.querySelector('a.active')){g.classList.add('has-active');const head=g.querySelector('.pn-head span');}
   });
-  if(cur)btn.textContent=cur.textContent;
+  /* Klick auf Menüpunkt: sofort visuelles Feedback (aktive Markierung wandert). */
+  menu.querySelectorAll('a[href*="#"]').forEach(a=>{
+    a.addEventListener('click',()=>{
+      hereHash='#'+a.getAttribute('href').split('#')[1];
+      cur=mark();
+    });
+  });
+  /* Hash kann sich zur Laufzeit ändern (z.B. Scroll-Nav auf der Seite): Markierung mitzieht. */
+  window.addEventListener('hashchange',()=>{hereHash=location.hash||'';cur=mark()});
+  /* Bugfix: ein per Klick geöffnetes Untermenü (.open) bleibt sonst offen, wenn man
+     über eine andere Gruppe hovert. Beim Verlassen der Gruppe schließen wir .open deshalb aktiv.
+     Vorher reichen wir mouseenter an andere Gruppen durch, damit das offen gebliebene
+     Submenü nicht hängen bleibt (Bild: Stream-Moderation-Fenster bleibt über dem Rest stehen). */
+  const clearOpen=()=>menu.querySelectorAll('.pn-group.open').forEach(g=>g.classList.remove('open'));
+  menu.querySelectorAll('.pn-group').forEach(g=>{
+    g.addEventListener('mouseenter',()=>{
+      menu.querySelectorAll('.pn-group.open').forEach(o=>{if(o!==g)o.classList.remove('open')});
+    });
+    g.addEventListener('mouseleave',()=>{g.classList.remove('open')});
+  });
+  /* Sub-Gruppen: Klick auf pn-head togglet (Mobile), Desktop-Hover erledigt CSS */
+  menu.querySelectorAll('.pn-group>.pn-head').forEach(head=>{
+    head.addEventListener('click',e=>{e.stopPropagation();clearOpen();head.parentElement.classList.toggle('open')});
+  });
+  /* pn-btn-Text: aktive Seite oder aktive Gruppe */
+  const activeGroup=menu.querySelector('.pn-group.has-active');
+  const headEl=cur?cur:(activeGroup?activeGroup.querySelector('.pn-head span'):null);
+  btn.textContent=activeGroup&&!cur?activeGroup.querySelector('.pn-head span').textContent:(headEl?headEl.textContent:btn.textContent);
   btn.addEventListener('click',e=>{e.stopPropagation();wrap.classList.toggle('open')});
   document.addEventListener('click',e=>{if(!wrap.contains(e.target))wrap.classList.remove('open')});
   document.addEventListener('keydown',e=>{if(e.key==='Escape')wrap.classList.remove('open')});
-  document.addEventListener('kriimaar:lang',()=>{if(cur)btn.textContent=cur.textContent});
+  document.addEventListener('kriimaar:lang',()=>{btn.textContent=headEl?headEl.textContent:btn.textContent});
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initPageNav);else initPageNav();
 const mq=window.matchMedia?matchMedia('(prefers-color-scheme:dark)'):null;
@@ -88,8 +144,10 @@ window.KriimaarTheme={get:()=>theme,set:setTheme};
 /* Gemeinsame Texte */
 I18N.add({de:{
  'dat.github':'Es gelten die <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">Datenschutzbestimmungen von GitHub</a>.',
- 'priv.host':'Die Seite wird über <a href="https://docs.github.com/de/pages" target="_blank" rel="noopener noreferrer">GitHub Pages</a> gehostet. Es gelten die <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">Datenschutzbestimmungen von GitHub</a>.'
+ 'priv.host':'Die Seite wird über <a href="https://docs.github.com/de/pages" target="_blank" rel="noopener noreferrer">GitHub Pages</a> gehostet. Es gelten die <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">Datenschutzbestimmungen von GitHub</a>.',
+ 'AKZENTFARBE':'Akzentfarbe','ZURÜCKSETZEN':'Zurücksetzen'
 },en:{
+ 'AKZENTFARBE':'Accent color','ZURÜCKSETZEN':'Reset',
  'Zuschauer timeouten andere Zuschauer über eine Kanalpunkte-Belohnung. Timeoutdauer, Schutz für VIPs und Moderatoren sowie alle Chat-Texte stellst du auf der Seite ein.':'Viewers time out other viewers via a channel point reward. Timeout duration, protection for VIPs and moderators and all chat texts can be set on the page.',
  'Verfügbar · 1 Action':'Available · 1 action',
  'Zuschauer timeouten andere per Kanalpunkte-Belohnung, mit Schutzregeln für VIPs und Mods':'Viewers time out others via a channel point reward, with protection rules for VIPs and mods',
@@ -102,11 +160,10 @@ I18N.add({de:{
  'Cache leeren und Seite neu laden?':'Clear cache and reload the page?',
  'Startseite':'Home','SEITE WECHSELN …':'SWITCH PAGE …','STARTSEITE / ÜBERSICHT':'HOME / OVERVIEW',
  'Feedback & Support':'Feedback & support','Fehler gefunden oder eine Action vermisst?':'Found a bug or missing an action?','Melde dich im Discord oder lege ein GitHub Issue an. Beides hilft, die Sammlung laufend zu verbessern.':'Reach out on Discord or open a GitHub issue. Both help improve this collection continuously.','IM DISCORD MELDEN ↗':'REPORT ON DISCORD ↗','GITHUB ISSUE ↗':'GITHUB ISSUE ↗','Rückmeldung':'Feedback','Fehler melden':'Report a bug','Danke! Die Rückmeldungsoptionen findest du unten.':'Thanks! You find the feedback options below.','Bild-Ansicht':'Image view','Großansicht schließen':'Close image view',
- 'FUNKTION / 7TV EMOTE SYSTEM':'FEATURE / 7TV EMOTE SYSTEM','FUNKTION / RANDOM MEME':'FEATURE / RANDOM MEME',
- 'FUNKTION / SPOTIFY ACTIONS':'FEATURE / SPOTIFY ACTIONS','TOOL / SPOTIFY OVERLAY EDITOR':'TOOL / SPOTIFY OVERLAY EDITOR','FUNKTION / STREAM-MODERATION':'FEATURE / STREAM MODERATION','FUNKTION / KANALPUNKTE-TIMEOUT':'FEATURE / CHANNEL POINTS TIMEOUT','FUNKTION / WATCHTIME':'FEATURE / WATCHTIME','STARTSEITE / ÜBERSICHT':'HOME / OVERVIEW',
+ 'FUNKTION / 7TV EMOTE SYSTEM':'FEATURE / 7TV EMOTE SYSTEM','FUNKTION / RANDOM MEME':'FEATURE / RANDOM MEME',  'FUNKTION / SPOTIFY ACTIONS':'FEATURE / SPOTIFY ACTIONS','TOOL / SPOTIFY OVERLAY EDITOR':'TOOL / SPOTIFY OVERLAY EDITOR','FUNKTION / STREAM-MODERATION':'FEATURE / STREAM MODERATION','SEKTION / MOD/UNMOD':'SECTION / MOD/UNMOD','SEKTION / ABWEHRMODUS':'SECTION / SHIELD MODE','FUNKTION / FOLLOWAGE':'FEATURE / FOLLOWAGE','FUNKTION / PODIUM':'FEATURE / PODIUM','FUNKTION / KANALPUNKTE-TIMEOUT':'FEATURE / CHANNEL POINTS TIMEOUT','FUNKTION / WATCHTIME':'FEATURE / WATCHTIME','STARTSEITE / ÜBERSICHT':'HOME / OVERVIEW',
  'Datenschutz & Info':'Privacy & Info',
- 'Design mit Hilfe von KI erstellt':'Design created with AI assistance','SCHLIEẞEN':'CLOSE','KI-Assistenz':'AI assistance',
- 'Dieses Tool und sein Design wurden mit Unterstützung von Künstlicher Intelligenz entwickelt.':'The site is built and expanded with the help of AI, the ideas and implementation of the features are NOT influenced by the AI. AI serves at most to make finished features and code understandable for everyone, so anyone can read the code and the notes inside it, seeing what was changed and when.',
+ 'Webseite mit Hilfe von KI erstellt':'Website created with AI assistance','SCHLIEẞEN':'CLOSE','KI-Assistenz':'AI assistance',
+ 'Diese Webseite wird mit Hilfe von KI gebaut, gefüllt und erweitert, die Ideen und Umsetzungen der einzelnen Funktionen werden davon nicht beeinflusst. In der Erstellung der Funktionen wird KI maximal dazu genutzt, fertige Features und Codezeilen verständlich zu machen, so dass der geschriebene Code durch eingefügte Kommentare möglichst verständlich und nachvollziehbar ist, auch für Laien.':'This website is built, filled and expanded with the help of AI, but the ideas and implementations of the individual features are not influenced by it. When building the features, AI is used at most to make finished features and lines of code understandable, so that the written code, through inserted comments, stays as clear and traceable as possible — even for laypeople.',
  'Diese Webseite speichert keine persönlichen Daten. Einstellungen und Textänderungen werden ausschließlich lokal im Browser verarbeitet und zwischengespeichert. Durch eine Cache-Löschung werden diese Daten zurückgesetzt.':'This website does not store any personal data. Settings and text changes are processed and cached exclusively locally in the browser. Clearing the cache resets this data.',
  'Die Seite wird über GitHub Pages gehostet. Es gelten die Datenschutzbestimmungen von GitHub.':'The site is hosted via GitHub Pages. The privacy policies of GitHub apply.',
  '✓ KOPIERT':'✓ COPIED','KOPIEREN FEHLGESCHLAGEN':'COPY FAILED',
@@ -116,7 +173,9 @@ I18N.add({de:{
  'BROWSER SOURCE (OPTIONAL)':'BROWSER SOURCE (OPTIONAL)','7TV ACCOUNT':'7TV ACCOUNT','KANALPUNKTE':'CHANNEL POINTS',
  'SPOTIFY APP':'SPOTIFY APP','SPOTIFY PREMIUM':'SPOTIFY PREMIUM','KEIN OBS NÖTIG':'NO OBS REQUIRED','KANALPUNKTE-TIMEOUT':'CHANNEL POINTS TIMEOUT',
  'dat.github':'It applies the <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">privacy policies of GitHub</a>.',
- 'priv.host':'The site is hosted via <a href="https://docs.github.com/de/pages" target="_blank" rel="noopener noreferrer">GitHub Pages</a>. It applies the <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">privacy policies of GitHub</a>.'
+ 'priv.host':'The site is hosted via <a href="https://docs.github.com/de/pages" target="_blank" rel="noopener noreferrer">GitHub Pages</a>. It applies the <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">privacy policies of GitHub</a>.',
+ 'FUNKTION / PODIUM':'FEATURE / PODIUM','FUNKTION / FOLLOWAGE':'FEATURE / FOLLOWAGE','FUNKTION / STREAM-MODERATION':'FEATURE / STREAM MODERATION','FUNKTION / KANALPUNKTE-TIMEOUT':'FEATURE / CHANNEL POINTS TIMEOUT','FUNKTION / WATCHTIME':'FEATURE / WATCHTIME','FUNKTION / RANDOM MEME':'FEATURE / RANDOM MEME','FUNKTION / SPOTIFY ACTIONS':'FEATURE / SPOTIFY ACTIONS','FUNKTION / 7TV EMOTE SYSTEM':'FEATURE / 7TV EMOTE SYSTEM','STARTSEITE / ÜBERSICHT':'HOME / OVERVIEW','SEKTION / MOD/UNMOD':'SECTION / MOD/UNMOD','SEKTION / ABWEHRMODUS':'SECTION / SHIELD MODE',
+ 'Übersicht':'Overview','Timeout':'Timeout','Random Meme':'Random Meme','Watchtime':'Watchtime','Spotify':'Spotify','Fun':'Fun','Stream-Moderation':'Stream Moderation','Mod/Unmod':'Mod/Unmod','Abwehrmodus':'Shield mode','Statistik':'Statistics','nav.sm':'Stream Moderation','nav.fun':'Fun','nav.stats':'Statistics','nav.3rd':'3rd Party','nav.home':'Home','Stream-Übersicht':'Stream overview','nav.sm.overview':'Stream overview'
 }});
 
 /* Kopieren mit Rückmeldung */
@@ -180,7 +239,7 @@ document.addEventListener('click',e=>{
 
 /* Einstellungs-Menü */
 const ksCss=document.createElement('style');
-ksCss.textContent='.ks-wrap{position:relative;display:grid;place-items:center;min-width:112px;border-left:1px solid #26262c;align-self:stretch;cursor:pointer}.ks-toggle{display:grid;place-items:center;width:100%;height:100%;min-height:46px;border:0;background:transparent;color:#8b8b96;font:11px "Courier New",monospace;text-transform:uppercase;cursor:pointer;padding:0 13px}.ks-toggle:hover{background:#141419;color:#d7c3ff}.ks-panel{display:none;position:absolute;top:100%;right:0;width:300px;max-width:calc(100vw - 32px);padding:14px;background:#0c0c0e;border:1px solid #26262c;z-index:80;box-shadow:0 20px 60px #000c;text-align:left}.ks-wrap.open .ks-panel{display:block}.ks-title{margin:0 0 12px;color:#fff;font:700 12px "Courier New",monospace;letter-spacing:.12em;text-transform:uppercase}.ks-row{margin-bottom:12px}.ks-row:last-child{margin-bottom:0}.ks-label{margin-bottom:6px;color:#8b8b96;font:10px "Courier New",monospace;letter-spacing:.1em;text-transform:uppercase}.ks-btns{display:flex;flex-wrap:wrap;gap:6px}.ks-btns.ks-col{flex-direction:column;align-items:stretch}.ks-btn{min-height:30px;padding:0 9px;border:1px solid #33333a;background:transparent;color:#b6b6c0;font:10px "Courier New",monospace;letter-spacing:.06em;text-transform:uppercase;cursor:pointer}.ks-btn:hover{border-color:#a855f7;color:#d7c3ff}.ks-btn.active{border-color:#a855f7;background:rgba(168,85,247,.12);color:#d7c3ff}.ks-btn.wide{text-align:left}.modal a{color:var(--p,#a855f7);text-decoration:underline}';
+ksCss.textContent='.ks-wrap{position:relative;display:grid;place-items:center;min-width:112px;border-left:1px solid #26262c;align-self:stretch;cursor:pointer}.ks-toggle{display:grid;place-items:center;width:100%;height:100%;min-height:46px;border:0;background:transparent;color:#8b8b96;font:11px "Courier New",monospace;text-transform:uppercase;cursor:pointer;padding:0 13px}.ks-toggle:hover{background:#141419;color:#d7c3ff}.ks-panel{display:none;position:absolute;top:100%;right:0;width:300px;max-width:calc(100vw - 32px);padding:14px;background:#0c0c0e;border:1px solid #26262c;z-index:80;box-shadow:0 20px 60px #000c;text-align:left}.ks-wrap.open .ks-panel{display:block}.ks-title{margin:0 0 12px;color:#fff;font:700 12px "Courier New",monospace;letter-spacing:.12em;text-transform:uppercase}.ks-row{margin-bottom:12px}.ks-row:last-child{margin-bottom:0}.ks-label{margin-bottom:6px;color:#8b8b96;font:10px "Courier New",monospace;letter-spacing:.1em;text-transform:uppercase}.ks-btns{display:flex;flex-wrap:wrap;gap:6px}.ks-btns.ks-col{flex-direction:column;align-items:stretch}.ks-btn{min-height:30px;padding:0 9px;border:1px solid #33333a;background:transparent;color:#b6b6c0;font:10px "Courier New",monospace;letter-spacing:.06em;text-transform:uppercase;cursor:pointer}.ks-btn:hover{border-color:#a855f7;color:#d7c3ff}.ks-btn.active{border-color:#a855f7;background:rgba(168,85,247,.12);color:#d7c3ff}.ks-btn.wide{text-align:left}.ks-color{width:46px;height:30px;padding:0 2px;border:1px solid #33333a;background:#0c0c0e;cursor:pointer}.ks-color::-webkit-color-swatch-wrapper{padding:2px}.ks-color::-webkit-color-swatch{border:0}.modal a{color:var(--p,#a855f7);text-decoration:underline}';
 document.head.appendChild(ksCss);
 let panel=null,btn=null,wrap=null;
 function el(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=txt;return e}
@@ -204,6 +263,14 @@ function renderPanel(){
   const rT=el('div','ks-row');rT.appendChild(el('div','ks-label',I18N.t('DESIGN')));
   rT.appendChild(btnGroup([{v:'system',label:I18N.t('SYSTEM')},{v:'light',label:I18N.t('HELL')},{v:'dark',label:I18N.t('DUNKEL')},{v:'oled',label:'OLED'}],theme,v=>setTheme(v)));
   panel.appendChild(rT);
+  const rC=el('div','ks-row');rC.appendChild(el('div','ks-label',I18N.t('AKZENTFARBE')));
+  const gC=el('div','ks-btns');
+  const cInp=el('input','ks-color');cInp.type='color';cInp.value=accent;cInp.setAttribute('aria-label',I18N.t('AKZENTFARBE'));
+  cInp.oninput=()=>{accent=cInp.value;try{localStorage.setItem(ACCENT_KEY,accent)}catch(e){}applyAccent()};
+  const cRes=el('button','ks-btn',I18N.t('ZURÜCKSETZEN'));cRes.type='button';
+  cRes.onclick=()=>{accent=ACCENT_DEFAULT;try{localStorage.removeItem(ACCENT_KEY)}catch(e){}applyAccent();renderPanel()};
+  gC.appendChild(cInp);gC.appendChild(cRes);rC.appendChild(gC);
+  panel.appendChild(rC);
   const rD=el('div','ks-row');rD.appendChild(el('div','ks-label',I18N.t('DATEN')));
   const g=el('div','ks-btns ks-col');
   const bL=el('button','ks-btn wide',I18N.t('LOCALSTORAGE LÖSCHEN'));

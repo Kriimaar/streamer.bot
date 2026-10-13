@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="de" data-theme="dark">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<title>Podium · Kriimaar</title>
+<style>
+:root{--p:#a855f7;--sp:#55e58f;--bg:#f5f5f7;--s:#fff;--s2:#f0f0f3;--t:#151519;--m:#656570;--l:#c8c8d0;--l2:#a8a8b3;--max:1180px}:root[data-theme=dark]{--bg:#0b0b0e;--s:#121216;--s2:#18181e;--t:#f2f2f4;--m:#9898a3;--l:#292931;--l2:#3a3a45}:root[data-theme=oled]{--bg:#000;--s:#050505;--s2:#0d0d0f;--t:#f6f6f8;--m:#9c9ca2;--l:#28282e;--l2:#414149}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;padding-bottom:80px;background:var(--bg);color:var(--t);font:15px/1.55 Arial,Helvetica,sans-serif}.shell{width:min(calc(100% - 40px),var(--max));margin:auto}code,input,textarea,select,button{font-family:"Courier New",monospace}.editor{display:grid;grid-template-columns:1.55fr .85fr;gap:20px;margin-top:15px;align-items:start}.editor .btn{margin-bottom:10px}.field input{width:100%;height:39px;padding:0 9px;border:1px solid var(--l2);background:var(--bg);color:var(--t)}.field input:focus{outline:none;border-color:var(--p)}@media(max-width:800px){.editor{grid-template-columns:1fr}}.header{position:sticky;top:0;z-index:5;background:#0c0c0e;border-bottom:1px solid #26262c}.header-in{min-height:58px;display:flex;justify-content:space-between;align-items:stretch;padding:0 24px}.brand{display:grid;place-items:center;color:#fff;font:700 16px "Courier New",monospace;text-decoration:none}.nav{display:flex}.nav a{min-width:112px;padding:0 13px;border:0;border-left:1px solid #26262c;background:transparent;color:#8b8b96;font:11px "Courier New",monospace;text-transform:uppercase;text-decoration:none;display:grid;place-items:center}.nav a:hover{background:#141419;color:#d7c3ff}.hero{display:grid;grid-template-columns:1fr 255px;border-bottom:1px solid var(--l)}.hero-copy{padding:68px 48px 58px 0}.label{margin:0 0 12px;color:var(--p);font:11px "Courier New",monospace;letter-spacing:.12em;text-transform:uppercase}h1{margin:0;font-size:clamp(42px,6vw,79px);line-height:.9;letter-spacing:-.07em;text-transform:uppercase}h1 span{color:var(--sp)}.lead{max-width:690px;margin:25px 0 0;color:var(--m);font-size:18px}.meta{display:flex;flex-direction:column;justify-content:space-between;padding:24px;background:var(--s);border-left:1px solid var(--l)}.meta p,.meta small{margin:0;color:var(--m);font:12px "Courier New",monospace}.meta b{color:var(--sp);font:700 38px/.9 "Courier New",monospace}section{border-bottom:1px solid var(--l)}.section,.guide{padding:56px 0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:36px}.title{margin:0;font-size:clamp(28px,4vw,43px);line-height:.98;letter-spacing:-.05em}.intro{max-width:720px;margin:15px 0;color:var(--m);font-size:16px}.box{margin-top:24px;padding:16px;border:1px solid var(--l2);background:var(--s)}.box h3{margin:0 0 8px;font-size:17px}.steps{margin:0;padding-left:20px}.steps li{margin-bottom:10px}.steps li::marker{color:var(--p);font-family:"Courier New",monospace;font-weight:bold}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 10px;border:1px solid var(--l2);background:transparent;color:var(--t);font:11px "Courier New",monospace;text-decoration:none;text-transform:uppercase;cursor:pointer}.btn:hover,.btn.active{border-color:var(--p);color:var(--p)}.btn.green,.btn.copied{border-color:var(--sp);background:var(--sp);color:#000}.btn.copy-error{border-color:#ed6565;color:#ff9191}.badge{display:inline-flex;align-items:center;gap:7px;padding:5px 10px;border:1px solid var(--l2);background:var(--s);color:var(--m);font:10px "Courier New",monospace;letter-spacing:.08em;text-transform:uppercase}.badge i{width:6px;height:6px;border-radius:50%;background:var(--l2);flex-shrink:0}.badge.req{color:var(--t);border-color:#2e5e43}.badge.req i{background:var(--sp)}.badge.plat{color:var(--t);border-color:#5b3a86}.badge.plat i{background:var(--p)}.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.video{margin-top:24px;aspect-ratio:16/9;border:1px solid var(--l2);background:#000}.video-soon{display:grid;place-items:center;border-style:dashed;background:var(--s)}.video-soon span{color:var(--m);font:11px "Courier New",monospace;letter-spacing:.14em}.field{margin-top:12px}.field label{display:block;margin-bottom:6px;color:var(--m);font:10px "Courier New",monospace;text-transform:uppercase}.field input{width:100%;height:39px;padding:0 9px;border:1px solid var(--l2);background:var(--bg);color:var(--t)}.bottom-bar{position:fixed;z-index:8;bottom:0;left:0;width:100%;min-height:46px;padding:6px 24px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;background:#0c0c0e;border-top:1px solid #26262c;color:#8b8b96;font-size:12px}.bottom-bar button,.footer-link{border:0;background:transparent;color:#8b8b96;font:11px "Courier New",monospace;text-transform:uppercase;cursor:pointer;text-decoration:none}.bottom-bar button:hover,.footer-link:hover{color:#55e58f}.social-icons{display:flex;align-items:center;gap:12px}.social-icons a{display:grid;place-items:center;color:#8b8b96}.social-icons a:hover{color:#a855f7}.social-icons svg{width:18px;height:18px;fill:currentColor}.bottom-bar-right{text-align:right}.overlay{display:none;position:fixed;inset:0;z-index:12;background:#000a;align-items:center;justify-content:center;padding:20px}.overlay.show{display:flex}.modal{width:min(100%,540px);padding:24px;border:1px solid var(--l2);background:var(--s);box-shadow:0 20px 80px #0009}.modal h2{margin:0 0 20px;color:var(--p)}.modal p{color:var(--m);font-size:13px;margin:0 0 15px}.modal .close{text-align:right}.table-wrap{overflow-x:auto}.setup-table{width:100%;border-collapse:collapse;font-size:13px}.setup-table th,.setup-table td{padding:12px;border:1px solid var(--l2);text-align:left;vertical-align:top}.setup-table th{background:var(--s2);color:var(--p);font:11px "Courier New",monospace;text-transform:uppercase}.setup-table td:first-child{white-space:nowrap}.action-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:25px}.fa-preview{width:100%;min-height:300px;resize:vertical;padding:10px 12px;background:var(--s2);color:var(--t);border:1px solid var(--l2);border-radius:4px;font-family:"Courier New",monospace;font-size:12px;line-height:1.6}.fa-preview:focus{outline:none;border-color:var(--p)}@media(max-width:800px){body{padding-bottom:112px}.shell{width:min(calc(100% - 28px),var(--max))}.header-in{min-height:57px;padding:0 14px}.nav a{display:none}.ks-wrap{min-width:0}.hero,.grid{grid-template-columns:1fr}.hero-copy{padding:44px 0}.meta{min-height:140px;border-left:0;border-top:1px solid var(--l)}.section,.guide{padding:42px 0}.bottom-bar{grid-template-columns:1fr;gap:3px;padding:7px 14px;text-align:center}.bottom-bar-left,.bottom-bar-right{text-align:center}.social-icons{justify-content:center}}
+</style>
+<script src="../../assets/app.js?v=2"></script>
+<script src="../../assets/code-editor.js"></script>
+<script src="../../assets/emoji-picker.js"></script>
+</head>
+<body>
+<header class="header"><div class="header-in"><a class="brand" href="../../index.html">Kriimaar</a><nav class="nav"><div class="pn-wrap" id="pageNav"><button type="button" class="pn-btn">FUNKTION / PODIUM</button>
+    <div class="pn-menu">
+      <a href="../../index.html" data-i18n="nav.home">Startseite</a>
+      <span class="pn-sep"></span>
+      <div class="pn-group"><span class="pn-head"><span data-i18n="nav.sm">Stream-Moderation</span><span class="pn-arrow">▸</span></span><div class="pn-sub">
+        <a href="../../Twitch/moderation/stream-moderation.html">Stream-Übersicht</a>
+        <a href="../../Twitch/moderation/stream-moderation.html#abwehr">Abwehrmodus</a>
+        <a href="../../Twitch/moderation/stream-moderation.html#adbreak">AdBreak</a>
+        <a href="../../Twitch/moderation/stream-moderation.html#clip">Clip erstellen</a>
+        <a href="../../Twitch/moderation/stream-moderation.html#modunmod">Mod/Unmod</a>
+        <a href="../../Twitch/moderation/stream-moderation.html#raid-shoutout">Raid Shoutout</a>
+        <a href="../../Twitch/moderation/stream-moderation.html#setgame">Set Game</a>
+        <a href="../../Twitch/moderation/stream-moderation.html#settitle">Set Title</a>
+        <a href="../../Twitch/moderation/stream-moderation.html#shoutouts">Shoutouts</a>
+      </div></div>
+      <div class="pn-group"><span class="pn-head"><span data-i18n="nav.fun">Fun</span><span class="pn-arrow">▸</span></span><div class="pn-sub">
+        <a href="../../Twitch/channel-points/user-timeout.html">Kanalpunkte-Timeout</a>
+        <a href="../../Twitch/channel-points/random-meme-generator.html">Random Meme</a>
+      </div></div>
+      <div class="pn-group"><span class="pn-head"><span data-i18n="nav.stats">Statistik</span><span class="pn-arrow">▸</span></span><div class="pn-sub">
+        <a href="../../Twitch/statistik/followage.html">Followage</a>
+        <a href="../../Twitch/statistik/podium.html">Podium</a>
+        <a href="../../Twitch/watchtime/watchtime.html">Watchtime</a>
+      </div></div>
+      <div class="pn-group"><span class="pn-head"><span data-i18n="nav.3rd">3rd Party</span><span class="pn-arrow">▸</span></span><div class="pn-sub">
+        <a href="../../Twitch/emotes/emote-recommendations.html">7TV Emote System</a>
+        <a href="../../Spotify/spotify-actions.html">Spotify</a>
+      </div></div>
+    </div></div></nav></div></header>
+<main id="top">
+<section class="shell hero"><div class="hero-copy"><p class="label" data-i18n="po.hero.label">Twitch · Streamer.bot · Kanalpunkte</p><h1>Po<br><span>dium.</span></h1><p class="lead" data-i18n="po.lead">Erster, Zweiter, Dritter über Kanalpunkte: aber ohne toten Rewards. Die Belohnungen bleiben nur aktiv, bis sie geclaimed sind: Erster reißt ab, Zweiter geht live, Dritter verschwindet. Wer zuerst da war, entscheidet der schnellste Klick.</p><div class="badges"><span class="badge req"><i></i>TWITCH</span><span class="badge req"><i></i>STREAMER.BOT</span><span class="badge plat"><i></i>KANALPUNKTE</span><span class="badge"><i></i>KEIN OBS NÖTIG</span></div></div><aside class="meta"><p>PODIUM</p><b>1.0.0</b><small data-i18n="po.meta.small">!firstboard · 3 Rewards · First Points</small></aside></section>
+
+<section class="guide"><div class="shell"><p class="label" data-i18n="po.guide.label">Video-Anleitung</p><h2 class="title" data-i18n="po.guide.title">Einrichtung im Video ansehen</h2><p class="intro" data-i18n="po.guide.intro">Das Video folgt hier. Bis dahin führen die Abschnitte darunter Schritt für Schritt durch die Einrichtung.</p><div class="video video-soon"><span data-i18n="po.guide.soon">VIDEO FOLGT IN KÜRZE</span></div></div></section>
+
+<section id="voraussetzungen"><div class="shell section"><p class="label" data-i18n="po.s1.label">01 / Voraussetzungen</p><h2 class="title" data-i18n="po.s1.title">Was vorher vorhanden sein muss</h2><ol class="steps">
+<li data-i18n="po.s1.l1">Streamer.bot ist mit deinem Twitch-Konto verbunden, oben rechts zeigt es <b>Connected</b>.</li>
+<li data-i18n="po.s1.l2">Auf Twitch existieren drei Kanalpunkte-Belohnungen Erster, Zweiter und Dritter. Trage ihre Reward-IDs im Anpassungs-Abschnitt ein.</li>
+<li data-i18n="po.s1.l3">Die drei Rewards stehen in Twitch zunächst auf aktiviert: der Import kümmert sich um das Aktivieren und Pausieren im Betrieb.</li>
+</ol></div></section>
+
+<section id="import"><div class="shell section"><p class="label" data-i18n="po.s2.label">02 / Import</p><h2 class="title" data-i18n="po.s2.title">Import-Key in Streamer.bot einfügen</h2><div class="grid"><div><p class="intro" data-i18n="po.s2.intro">Der Import enthält drei Actions: die Reward-Einlösung, den Streamstart-Reset und das Firstboard per Command. Nach dem Import vergeßt die Reward-IDs, aber nicht.</p><button class="btn green" id="copyImport" data-i18n="po.btn.import">IMPORT-KEY KOPIEREN</button></div><div class="box"><h3 data-i18n="po.s2.h3">Import</h3><ol class="steps">
+<li data-i18n="po.s2.l1">Öffne Streamer.bot und klicke oben auf <b>Import</b>.</li>
+<li data-i18n="po.s2.l2">Wähle <b>Import from Clipboard</b>.</li>
+<li data-i18n="po.s2.l3">Klicke hier auf <b>Import-Key kopieren</b>.</li>
+<li data-i18n="po.s2.l4">Füge den Key in Streamer.bot ein und bestätige den Import.</li>
+<li data-i18n="po.s2.l5">In den drei Actions <b>First Rewards Redemption</b>, <b>First Rewards Stream Start</b> und <b>First Board</b> sitzt jeweils eine Execute-C#-Sub-Action.</li>
+<li data-i18n="po.s2.l6">Öffne jede Sub-Action und kompiliere den Code: <b>Find Refs</b>, <b>Compile</b>, <b>Save &amp; Compile</b>.</li>
+</ol></div></div></div></section>
+
+<section id="rewards"><div class="shell section"><p class="label" data-i18n="po.s3.label">03 / Rewards zuweisen</p><h2 class="title" data-i18n="po.s3.title">Die drei Reward-IDs eintragen</h2><div class="grid"><div class="box"><h3 data-i18n="po.s3.h3a">Reward-IDs kopieren</h3><ol class="steps">
+<li data-i18n="po.s3.l1">Öffne in Streamer.bot <b>Platforms → Twitch → Channel Point Rewards</b>.</li>
+<li data-i18n="po.s3.l2">Wähle deinen Erster-Reward und kopiere die Reward-ID. Wiederhole das für Zweiter und Dritter.</li>
+</ol></div><div class="box"><h3 data-i18n="po.s3.h3b">IDs eintragen</h3><ol class="steps">
+<li data-i18n="po.s3.l3">Öffne die Action <b>First Rewards Redemption</b>.</li>
+<li data-i18n="po.s3.l4">Aktiviere in der Redemption-Action die Trigger, indem du sie auf deine drei Rewards umbiegst (Kanalpunkte-Belohnung eingelöst, pro Reward ein Trigger).</li>
+<li data-i18n="po.s3.l5">Öffne die Execute-C#-Sub-Action und ersetze HIER_REWARD_ID_ERSTER / ZWEITER / DRITTER oben im Code durch deine drei IDs.</li>
+<li data-i18n="po.s3.l6">Kompiliere erneut: <b>Find Refs</b>, <b>Compile</b>, <b>Save &amp; Compile</b>.</li>
+</ol></div></div></div></section>
+
+<section id="ablauf"><div class="shell section"><p class="label" data-i18n="po.s4.label">04 / Ablauf & Firstboard</p><h2 class="title" data-i18n="po.s4.title">Wie Erster, Zweiter, Dritter abläuft</h2><div class="grid"><div class="box"><h3 data-i18n="po.s4.h3a">Der Kreislauf</h3><ol class="steps">
+<li data-i18n="po.s4.l1">Beim Streamstart setzt die Reset-Action die Claims zurück und schaltet nur den Erster-Reward aktiv. Zweiter und Dritter bleiben pausiert.</li>
+<li data-i18n="po.s4.l2">Wer Erster claimed, bekommt 3 First-Punkte, und der Bot pausiert den Erster-Reward sofort.</li>
+<li data-i18n="po.s4.l3">Gleichzeitig schaltet der Bot den Zweiter-Reward aktiv. Wer ihn claimed, bekommt 2 Punkte: danach geht der Dritter-Reward aktiv (1 Punkt).</li>
+<li data-i18n="po.s4.l4">Ist der Dritte geclaimed, verschwindet die Belohnung. Bis zum nächsten Streamstart bleibt im Kanal kein toter Reward übrig.</li>
+<li data-i18n="po.s4.l5">Pro Person und Stream ist nur ein Platz möglich. Wer schon etwas geclaimed hat, bekommt beim nächsten Versuch einen Hinweis statt Punkten.</li>
+</ol></div><div class="box"><h3 data-i18n="po.s4.h3b">!firstboard im Chat</h3><ol class="steps">
+<li data-i18n="po.s4.l6">Das Command <code>!firstboard</code> oder <code>!fboard</code> zeigt die Top 10 aller First-Punkte.</li>
+<li data-i18n="po.s4.l7">Das Command ist nach dem Import deaktiviert. Aktiviere es per Rechtsklick unter <b>Commands</b>.</li>
+<li data-i18n="po.s4.l8">Hinweis: pro Person zählt der Standard: wer die Punkte anderer editieren will, kann das als Persisted Global <code>firstPointsBoard</code> von Hand tun.</li>
+</ol></div></div><div class="box"><h3 data-i18n="po.s4.h3c">Punkte auf einen Blick</h3><div class="table-wrap"><table class="setup-table"><thead><tr><th data-i18n="po.s4.th1">Platz</th><th data-i18n="po.s4.th2">Punkte</th><th data-i18n="po.s4.th3">Danach</th></tr></thead><tbody>
+<tr><td data-i18n="po.s4.r1">Erster</td><td data-i18n="po.s4.r1v">3</td><td data-i18n="po.s4.r1t">Zweiter wird aktiv</td></tr>
+<tr><td data-i18n="po.s4.r2">Zweiter</td><td data-i18n="po.s4.r2v">2</td><td data-i18n="po.s4.r2t">Dritter wird aktiv</td></tr>
+<tr><td data-i18n="po.s4.r3">Dritter</td><td data-i18n="po.s4.r3v">1</td><td data-i18n="po.s4.r3t">Reward wird pausiert, Runde beendet</td></tr>
+</tbody></table></div></div></div></section>
+
+<section id="anpassen"><div class="shell section"><p class="label" data-i18n="po.s5.label">05 / Chat-Texte anpassen</p><h2 class="title" data-i18n="po.s5.title">Bot-Nachrichten hier einstellen</h2><p class="intro" data-i18n="po.s5.p2">Der Editor generiert den kompletten Code der Redemption-Action: rechts einstellen, links kopieren und den ganzen Inhalt der Execute-C#-Sub-Action damit ersetzen. Die drei Reward-IDs trägst du rechts ein, sie landen automatisch im Code.</p><div class="editor"><div><button type="button" class="btn green" id="copyCode" data-i18n="po.s5.btn">C#-CODE KOPIEREN</button><textarea id="poCode" spellcheck="false" aria-label="C#-Code"></textarea></div><aside class="box" style="margin-top:0"><h3 data-i18n="po.s5.h3">Eigene Werte</h3><p class="intro" data-i18n="po.s5.p">Änderungen übernehmen sich sofort in den Code links. Die Chat-Texte antwortet der Bot im Namen deines Twitch-Kontos.</p>
+<div class="field"><label for="poMsgClaim" data-i18n="po.s5.f1">Nachricht beim Claimen (%username%, %points%, %totalPoints%)</label><input id="poMsgClaim" value="%username% hat %points% First-Punkte (insgesamt %totalPoints%)" data-emoji-picker></div>
+<div class="field"><label for="poMsgAlready" data-i18n="po.s5.f2">Antwort, wenn die Person diesen Stream schon etwas geclaimed hat</label><input id="poMsgAlready" value="%username%, du hast in diesem Stream bereits einen First-Platz" data-emoji-picker></div>
+<div class="field"><label for="poMsgTaken" data-i18n="po.s5.f3">Antwort, wenn der Platz in diesem Stream schon vergeben ist</label><input id="poMsgTaken" value="%place% ist in diesem Stream schon vergeben" data-emoji-picker></div>
+<div class="field"><label for="poBoardEmpty" data-i18n="po.s5.f5">Antwort, wenn das Board noch leer ist</label><input id="poBoardEmpty" value="Noch keine First-Punkte vergeben. Das Firstboard ist leer." data-emoji-picker></div>
+<div class="field"><label for="poRw1" data-i18n="po.s5.rw1">Reward-ID: Erster</label><input id="poRw1" placeholder="HIER_REWARD_ID_ERSTER"></div>
+<div class="field"><label for="poRw2" data-i18n="po.s5.rw2">Reward-ID: Zweiter</label><input id="poRw2" placeholder="HIER_REWARD_ID_ZWEITER"></div>
+<div class="field"><label for="poRw3" data-i18n="po.s5.rw3">Reward-ID: Dritter</label><input id="poRw3" placeholder="HIER_REWARD_ID_DRITTER"></div>
+</aside></div></section>
+
+<section id="testen"><div class="shell section"><p class="label" data-i18n="po.s6.label">06 / Abschluss</p><h2 class="title" data-i18n="po.s6.title">Kontrolle vor dem ersten Live-Test</h2><div class="grid"><div class="box"><h3 data-i18n="po.s6.h3a">Checkliste</h3><ol class="steps">
+<li data-i18n="po.s6.c1">Alle drei importierten Actions zeigen eine Execute-C#-Sub-Action ohne Kompilierfehler.</li>
+<li data-i18n="po.s6.c2">Die Redemption-Action ist mit deinen drei Rewards verbunden, die IDs stimmen mit dem Code überein.</li>
+<li data-i18n="po.s6.c3"><code>!firstboard</code> ist aktiviert und antwortet mit dem aktuellen Stand.</li>
+<li data-i18n="po.s6.c4">Stream startet → nur der Erster-Reward ist aktiv. Du selbst claimst → Zweiter wird aktiv; ein zweiter Account claimt → Dritter wird aktiv, danach pausiert.</li>
+</ol></div><div class="box"><h3 data-i18n="po.s6.h3b">Typische Probleme</h3><ol class="steps">
+<li data-i18n="po.s6.p1"><b>Reward-Trigger feuern nicht?</b> Prüfe, ob die Redemption-Action auf deine Rewards verweist und der Streamer.bot-Stream-Trigger aktiv ist.</li>
+<li data-i18n="po.s6.p2"><b>Reward pausiert, aber kein nächster geht aktiv?</b> Reward-ID-Konstanten im Code mit den echten IDs vergleichen (Schreibweise exakt!).</li>
+<li data-i18n="po.s6.p3"><b>!firstboard antwortet nicht?</b> Command per Rechtsklick aktivieren; im Trigger der Board-Action muss das Command-Trigger-Event sichtbar sein.</li>
+</ol></div></div></div></section>
+
+<section id="support"><div class="shell section"><p class="label">Feedback &amp; Support</p><h2 class="title">Fehler gefunden oder eine Action vermisst?</h2><p class="intro">Melde dich im Discord oder lege ein GitHub Issue an. Beides hilft, die Sammlung laufend zu verbessern.</p><div class="action-nav"><a class="btn" href="https://discord.gg/WxSbBstFmt" target="_blank" rel="noopener noreferrer">IM DISCORD MELDEN ↗</a><a class="btn" href="https://github.com/Kriimaar/streamer.bot-functions/issues" target="_blank" rel="noopener noreferrer">GITHUB ISSUE ↗</a></div></div></section></main>
+<footer class="bottom-bar"><div class="bottom-bar-left"><button id="btn-privacy">Datenschutz &amp; Info</button></div><div class="social-icons"><a href="https://discord.com/invite/WxSbBstFmt" target="_blank" rel="noopener noreferrer" title="Discord"><svg viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.0777.0777 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276c-.598.355-1.221.645-1.873.8914a.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.077.077 0 00.0842.0286c1.961-.6067 4.0-1.52 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.852-9.012-3.5485-13.6604z"></path></svg></a><a href="https://www.youtube.com/@KriimaarSouls" target="_blank" rel="noopener noreferrer" title="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136C4.495 20.455 12 20.455 12 20.455s7.505 0 9.376-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg></a><a href="https://github.com/kriimaar" target="_blank" rel="noopener noreferrer" title="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 9.2-5.475 5.92.42.36.81.9.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 15.93 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a><a href="https://steamcommunity.com/id/kriimaar" target="_blank" rel="noopener noreferrer" title="Steam Freundschaftsanfrage"><svg viewBox="0 0 24 24"><path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z"/></svg></a></div><div class="bottom-bar-right"><a id="btn-ai-info" class="footer-link">Webseite mit Hilfe von KI erstellt</a></div></footer>
+<div class="overlay" id="privacyModal"><div class="modal"><h2>Datenschutz &amp; Info</h2><p>Diese Webseite speichert keine persönlichen Daten. Einstellungen und Textänderungen werden ausschließlich lokal im Browser verarbeitet und zwischengespeichert. Durch eine Cache-Löschung werden diese Daten zurückgesetzt.</p><p data-i18n="priv.host">Die Seite wird über <a href="https://docs.github.com/de/pages" target="_blank" rel="noopener noreferrer">GitHub Pages</a> gehostet. Es gelten die <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">Datenschutzbestimmungen von GitHub</a>.</p><div class="close"><button class="btn" data-close="privacyModal">SCHLIEẞEN</button></div></div></div><div class="overlay" id="aiModal"><div class="modal"><h2>KI-Assistenz</h2><p>Diese Webseite wird mit Hilfe von KI gebaut, gefüllt und erweitert, die Ideen und Umsetzungen der einzelnen Funktionen werden davon nicht beeinflusst. In der Erstellung der Funktionen wird KI maximal dazu genutzt, fertige Features und Codezeilen verständlich zu machen, so dass der geschriebene Code durch eingefügte Kommentare möglichst verständlich und nachvollziehbar ist, auch für Laien.</p><div class="close"><button class="btn" data-close="aiModal">SCHLIEẞEN</button></div></div></div>
+<script>
+/* Podium · i18n (EN) + Import-Key + C#-Generierung mit Live-Editor */
+I18N.add({
+ 'nav.sm':'Stream Moderation','nav.fun':'Fun','nav.stats':'Statistics','nav.home':'Home','nav.sm.overview':'Stream overview','Stream-Übersicht':'Stream overview','nav.3rd':'3rd Party',
+ 'po.hero.label':'Twitch · Streamer.bot · Channel points','po.lead':'Claim First, Second and Third via channel points: but without dead rewards. The rewards stay active only until they are claimed: First gets taken, Second goes live, the Third disappears forever after that. Who was quickest decides.','po.meta.small':'!firstboard · 3 rewards · First Points','po.guide.label':'Video guide','po.guide.title':'Watch the setup in the video','po.guide.intro':'The video will follow here. Until then the sections below walk you step by step through the setup.','po.guide.soon':'VIDEO COMING SOON',
+ 'po.s1.label':'01 / Requirements','po.s1.title':'What needs to be in place first','po.s1.l1':'Streamer.bot is connected with your Twitch account and shows <b>Connected</b> in the top right.','po.s1.l2':'On Twitch three channel point rewards Erster (first), Zweiter (second) and Dritter (third) exist. Fill in their reward IDs in the customization section.','po.s1.l3':'The three rewards start enabled on Twitch: the import handles enabling and pausing them during operation.','po.btn.import':'COPY IMPORT KEY','po.s2.label':'02 / Import','po.s2.title':'Paste the import key into Streamer.bot','po.s2.intro':'The import contains three actions: the reward redemption, the stream start reset and the firstboard via command. After the import, do not forget the reward IDs.','po.s2.h3':'Import','po.s2.l1':'Open Streamer.bot and click <b>Import</b> at the top.','po.s2.l2':'Choose <b>Import from Clipboard</b>.','po.s2.l3':'Click <b>Copy import key</b> here.','po.s2.l4':'Paste the key into Streamer.bot and confirm the import.','po.s2.l5':'Inside the three actions <b>First Rewards Redemption</b>, <b>First Rewards Stream Start</b> and <b>First Board</b> sits an Execute-C# sub-action each.','po.s2.l6':'Open every sub-action and compile the code: <b>Find Refs</b>, <b>Compile</b>, <b>Save & Compile</b>.','po.s3.label':'03 / Assign the rewards','po.s3.title':'Enter the three reward IDs','po.s3.h3a':'Copy the reward IDs','po.s3.l1':'Open <b>Platforms → Twitch → Channel Point Rewards</b> in Streamer.bot.','po.s3.l2':'Select your Erster reward and copy the reward ID. Repeat for Zweiter and Dritter.','po.s3.h3b':'Insert the IDs','po.s3.l3':'Open the <b>First Rewards Redemption</b> action.','po.s3.l4':'Rebind the reward triggers of the redemption action to your three rewards (one channel point reward redeemed trigger per reward).','po.s3.l5':'Open the Execute-C# sub-action and replace FIRST_REWARD_ID / SECOND_REWARD_ID / THIRD_REWARD_ID at the top of the code with your three IDs.','po.s3.l6':'Compile again: <b>Find Refs</b>, <b>Compile</b>, <b>Save & Compile</b>.',
+'po.s4.label':'04 / Flow & firstboard','po.s4.title':'How First, Second, Third plays out','po.s4.h3a':'The cycle','po.s4.l1':'At stream start the reset action clears the claims and enables only the Erster reward. Zweiter and Dritter stay paused.','po.s4.l2':'Whoever claims Erster gets 3 First Points, and the bot pauses the Erster reward immediately.','po.s4.l3':'At the same time the bot enables the Zweiter reward. Whoever claims it gets 2 points: afterwards the Dritter reward goes active (1 point).','po.s4.l4':'Once the Third is claimed the reward disappears. Until the next stream start no dead reward remains in the channel.','po.s4.l5':'One place per person and stream. Whoever already claimed something gets a hint instead of points on the next attempt.','po.s4.h3b':'!firstboard in chat','po.s4.l6':'The command <code>!firstboard</code> or <code>!fboard</code> shows the top 10 of all First Points.','po.s4.l7':'The command is disabled after the import. Enable it via right click under <b>Commands</b>.','po.s4.l8':'Tip: the standard counts per person: if you want to edit the points of others manually, the persisted global <code>firstPointsBoard</code> is where they live.','po.s4.h3c':'Points at a glance','po.s4.th1':'Place','po.s4.th2':'Points','po.s4.th3':'Afterwards','po.s4.r1':'First','po.s4.r1v':'3','po.s4.r1t':'Second becomes active','po.s4.r2':'Second','po.s4.r2v':'2','po.s4.r2t':'Third becomes active','po.s4.r3':'Third','po.s4.r3v':'1','po.s4.r3t':'Reward paused, round done',
+ 'po.s5.label':'05 / Adjust chat texts','po.s5.title':'Set the bot messages here','po.s5.btn':'COPY C# CODE','po.s5.h3':'Own values','po.s5.p':'Changes flow instantly into the code on the left. %username% is where the bot answers.','po.s5.p2':'The editor generates the chat texts of the Redemption action as C# code: set it up on the right, copy on the left and paste it into the Execute C# sub-action. Enter the three reward IDs on the right, they flow into the code automatically.','po.s5.rw1':'Reward ID: first','po.s5.rw2':'Reward ID: second','po.s5.rw3':'Reward ID: third','po.s5.f1':'Message when claiming (%username%, %points%, %totalPoints%)','po.s5.f2':'Reply when this person already claimed something this stream','po.s5.f3':'Reply when the place is gone in this stream','po.s5.f4':'Name of the firstboard','po.s5.f5':'Message when the board is empty','po.s5.l1':'Open the imported <b>First Rewards Redemption</b> action and paste the generated code into the Execute-C#-Sub-Action.','po.s5.l2':'Replace only the three reward ID constants and the chat texts: nothing else.','po.s5.l3':'Compile: <b>Find Refs</b>, <b>Compile</b>, <b>Save & Compile</b>.',
+ 'po.s6.label':'06 / Wrap-up','po.s6.title':'A final check before the first live test','po.s6.h3a':'Checklist','po.s6.h3b':'Typical issues','po.s6.c1':'All three imported actions show an Execute-C# sub-action without compile errors.','po.s6.c2':'The Redemption action is connected to your three rewards, the IDs match the code.','po.s6.c3':'<code>!firstboard</code> is enabled and answers with the current state.','po.s6.c4':'Stream starts → only the Erster reward is active. You claim → Zweiter becomes active; a second account claims → Dritter becomes active, afterwards everything is paused.','po.s6.p1':'<b>Reward triggers not firing?</b> Check whether the Redemption action points to your rewards and the Streamer.bot stream trigger is enabled.','po.s6.p2':'<b>Reward paused but no next one goes active?</b> Compare the reward ID constants in the code with the real IDs (exact spelling!).','po.s6.p3':'<b>!firstboard does not answer?</b> Enable the command via right click; the board action trigger must show the command event.','po.s6.p4':'<b>Duplicate claims slip through?</b> Reset the persisted global <code>firstRewardsClaimedThisStream</code> manually or restart Streamer.bot.'
+,'Diese Webseite wird mit Hilfe von KI gebaut, gefüllt und erweitert, die Ideen und Umsetzungen der einzelnen Funktionen werden davon nicht beeinflusst. In der Erstellung der Funktionen wird KI maximal dazu genutzt, fertige Features und Codezeilen verständlich zu machen, so dass der geschriebene Code durch eingefügte Kommentare möglichst verständlich und nachvollziehbar ist, auch für Laien.':'The website is built and expanded with the help of AI, but the ideas and implementation of the individual features are not influenced by it.'});
+I18N.titles={de:'Podium · Kriimaar',en:'Podium · Kriimaar'};
+
+const KEY_PO="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";
+
+function qMsg(s){ // Bot-Nachricht aus dem UI-Feld als C#-String (mit Interpolation) ausgeben
+  return '"'+csq(String(s==null?'':s))+'"';
+}
+function poRender(){
+ const v=id=>document.getElementById(id).value;
+ const msgClaim=v('poMsgClaim')||'%username% hat %points% First-Punkte (insgesamt %totalPoints%)';
+ const msgAlready=v('poMsgAlready')||'%username%, du hast in diesem Stream bereits einen First-Platz';
+ const msgTaken=v('poMsgTaken')||'%place% ist in diesem Stream schon vergeben';
+ const boardEmpty=v('poBoardEmpty')||'Noch keine First-Punkte vergeben. Das Firstboard ist leer.';
+ // Reward-IDs: hier auf der Seite eintragen statt im Streamer.bot-Code suchen.
+ const F=(id,doc)=>{const e=document.getElementById(id);if(!e)return null;try{localStorage.setItem('kpo-'+id,JSON.stringify(e.value))}catch(ex){}return e.value;};
+ const r1=F('poRw1')||'HIER_REWARD_ID_ERSTER', r2=F('poRw2')||'HIER_REWARD_ID_ZWEITER', r3=F('poRw3')||'HIER_REWARD_ID_DRITTER';
+ // UI-Platzhalter → echte C#-Interpolation (wie im Original-Import-Key).
+ const map=s=>String(s||'').replace(/%username%/g,'{user}').replace(/%totalPoints%/g,'{totalPoints}').replace(/%points%/g,'{points}').replace(/%place%/g,'{place}');
+ // nowrap: im Original-Code ist die Erfolgs-Nachricht "{user} hat {place} eingelöst und damit insgesamt {totalPoints} First-Points."
+ // Wir liefern die vier Bot-Nachrichten als Variablen und den Originalablauf unverändert.
+ const msgClaimC=map(msgClaim).replace('{user} hat {points} First-Punkte (insgesamt {totalPoints})','{user} hat {place} eingelöst und damit insgesamt {totalPoints} First-Points');
+ const code=PO_CODE_TMPL({
+  FirstRewardId:r1, SecondRewardId:r2, ThirdRewardId:r3,
+  MsgAlready:qMsg(map(msgAlready)), MsgTaken:qMsg(map(msgTaken)), MsgBoardEmpty:qMsg(map(boardEmpty)),
+  MsgOk:qMsg(msgClaimC)
+ });
+ document.getElementById('poCode').value=code;
+ if(window.KriimaarCodeEditor&&poEd){poEd.sync();}
+ try{localStorage.setItem('kpo-msg',JSON.stringify([msgClaim,msgAlready,msgTaken,boardEmpty]))}catch(e){}
+}
+['poMsgClaim','poMsgAlready','poMsgTaken','poBoardEmpty','poRw1','poRw2','poRw3'].forEach(id=>document.getElementById(id).addEventListener('input',poRender));
+try{const saved=JSON.parse(localStorage.getItem('kpo-msg'));if(Array.isArray(saved)){
+ if(typeof saved[0]==='string')document.getElementById('poMsgClaim').value=saved[0];
+ if(typeof saved[1]==='string')document.getElementById('poMsgAlready').value=saved[1];
+ if(typeof saved[2]==='string')document.getElementById('poMsgTaken').value=saved[2];
+ if(typeof saved[3]==='string')document.getElementById('poBoardEmpty').value=saved[3];
+}}catch(e){}
+try{['poRw1','poRw2','poRw3'].forEach(function(id){const s=localStorage.getItem('kpo-'+id);if(s){try{document.getElementById(id).value=JSON.parse(s)}catch(e){}}});}catch(e){}
+var poEd=null;
+
+/* PO_CODE_TMPL: kompletter Redemption-Action-Code (1:1 wie im Import-Key),
+   Serv-Bot-Nachrichten + Reward-IDs steuerbar über das eigene UI. */
+function csq(s){return String(s==null?'':s).replace(/\\/g,'\\\\').replace(/"/g,'\\"').replace(/\r?\n/g,'\\n');}
+const PO_CODE_TMPL = (f) => `using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+
+public class CPHInline
+{
+    // ══ Reward-IDs (vom Webseite-Editor eingetragen) ══
+    private const string FirstRewardId = "${f.FirstRewardId}";
+    private const string SecondRewardId = "${f.SecondRewardId}";
+    private const string ThirdRewardId = "${f.ThirdRewardId}";
+
+    private const string BoardVariable = "FirstPointsBoard";
+    private const string ClaimedVariable = "FirstRewardsClaimedThisStream";
+
+    public bool Execute()
+    {
+        if (!CPH.TryGetArg("rewardId", out string rewardId)) return false;
+        if (!CPH.TryGetArg("rewardName", out string rewardName)) return false;
+        if (!CPH.TryGetArg("userId", out string userId)) return false;
+
+        if (!CPH.TryGetArg("user", out string user) && !CPH.TryGetArg("userName", out user))
+        {
+            user = GetDisplayName(userId);
+        }
+
+        string place;
+        int points;
+        string claimedKey;
+        string nextRewardId;
+
+        switch (rewardId)
+        {
+            case FirstRewardId:
+                place = "Erster";
+                points = 3;
+                claimedKey = "first";
+                nextRewardId = SecondRewardId;
+                break;
+
+            case SecondRewardId:
+                place = "Zweiter";
+                points = 2;
+                claimedKey = "second";
+                nextRewardId = ThirdRewardId;
+                break;
+
+            case ThirdRewardId:
+                place = "Dritter";
+                points = 1;
+                claimedKey = "third";
+                nextRewardId = null;
+                break;
+
+            default:
+                CPH.LogWarn($"Unbekannter First Reward: {rewardName} ({rewardId})");
+                return false;
+        }
+
+        var claimed = GetDictionary(ClaimedVariable);
+
+        // Dieselbe Person darf pro Stream nur einen Platz claimen
+        foreach (var entry in claimed)
+        {
+            if (string.Equals(Convert.ToString(entry.Value), userId, StringComparison.OrdinalIgnoreCase))
+            {
+                CPH.SendMessage(${f.MsgAlready});
+                return true;
+            }
+        }
+
+        // Platz darf nur einmal vergeben werden
+        if (claimed.ContainsKey(claimedKey))
+        {
+            CPH.SendMessage(${f.MsgTaken});
+            return true;
+        }
+
+        claimed[claimedKey] = userId;
+        SaveDictionary(ClaimedVariable, claimed);
+
+        var board = GetDictionary(BoardVariable);
+
+        if (!board.ContainsKey(userId))
+        {
+            board[userId] = 0;
+        }
+
+        board[userId] = Convert.ToInt32(board[userId]) + points;
+        SaveDictionary(BoardVariable, board);
+
+        int totalPoints = Convert.ToInt32(board[userId]);
+
+        CPH.SendMessage(${f.MsgOk});
+
+        // Aktuell eingelösten Reward pausieren
+        CPH.PauseReward(rewardId);
+
+        // Nächsten Platz freischalten
+        if (!string.IsNullOrWhiteSpace(nextRewardId))
+        {
+            CPH.UnPauseReward(nextRewardId);
+        }
+
+        return true;
+    }
+
+    private string GetDisplayName(string userId)
+    {
+        var userInfo = CPH.TwitchGetUserInfoById(userId);
+
+        if (userInfo != null && !string.IsNullOrWhiteSpace(userInfo.UserName))
+        {
+            return userInfo.UserName;
+        }
+
+        return userId;
+    }
+
+    private Dictionary<string, object> GetDictionary(string variableName)
+    {
+        string json = CPH.GetGlobalVar<string>(variableName, true);
+
+        if (string.IsNullOrWhiteSpace(json))
+        {
+            return new Dictionary<string, object>();
+        }
+
+        try
+        {
+            return JsonConvert.DeserializeObject<Dictionary<string, object>>(json)
+                   ?? new Dictionary<string, object>();
+        }
+        catch
+        {
+            return new Dictionary<string, object>();
+        }
+    }
+
+    private void SaveDictionary(string variableName, Dictionary<string, object> data)
+    {
+        CPH.SetGlobalVar(variableName, JsonConvert.SerializeObject(data), true);
+    }
+}`;
+
+document.addEventListener('click',e=>{
+ if(e.target.id==='copyImport')copyWithFeedback(e.target,KEY_PO);
+ if(e.target.id==='copyCode')copyWithFeedback(e.target,document.getElementById('poCode').value);
+});
+poRender();
+// Podium C#-Editor: Syntax-Highlighting + Seitendesign über das gemeinsame Modul.
+if(window.KriimaarCodeEditor){
+  poEd=KriimaarCodeEditor.create(document.getElementById('poCode'));
+  if(poEd)poEd.sync();
+}
+I18N.apply();
+</script>
+</body>
+</html>
